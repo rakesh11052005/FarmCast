@@ -1,0 +1,54 @@
+.soil-card {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.soil-card.clickable {
+  cursor: pointer;
+}
+
+.soil-card.clickable:hover {
+  box-shadow: 0 0 12px rgba(40, 167, 69, 0.4);
+  transform: scale(1.01);
+}
+
+.soil-details {
+  margin-top: 1rem;
+  background: #eef6f0;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.soil-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.soil-note {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.recommended-crops {
+  background: #eafbe7;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.recommended-crops h4 {
+  margin-bottom: 0.5rem;
+  color: #2c662d;
+}
+
+.recommended-crops ul {
+  padding-left: 1.2rem;
+  list-style-type: disc;
+  color: #444;
+}
