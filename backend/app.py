@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
 from utils.predictor import predict_yield
 import numpy as np
 import re
@@ -14,10 +15,23 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-# ✅ In-memory user store
-users = {}
+# ✅ Database setup
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///farmcast.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
-# ✅ Email confirmation function
+# ✅ User model
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(100), nullable=False)
+
+# ✅ Create tables
+with app.app_context():
+    db.create_all()
+
+# ✅ Email confirmation
 def send_confirmation_email(to_email, name):
     try:
         sender = os.getenv("EMAIL_ADDRESS")
@@ -86,13 +100,14 @@ def register():
         return jsonify({'error': 'Name cannot be empty'}), 400
     if not password or len(password) < 6:
         return jsonify({'error': 'Password must be at least 6 characters'}), 400
-    if email in users:
+
+    existing_user = User.query.filter_by(email=email).first()
+    if existing_user:
         return jsonify({'error': 'User already exists'}), 400
 
-    users[email] = {
-        'name': name,
-        'password': password
-    }
+    new_user = User(email=email, name=name, password=password)
+    db.session.add(new_user)
+    db.session.commit()
 
     send_confirmation_email(email, name)
 
@@ -101,10 +116,10 @@ def register():
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    user = users.get(data.get('email'))
-    if not user or user['password'] != data.get('password'):
+    user = User.query.filter_by(email=data.get('email')).first()
+    if not user or user.password != data.get('password'):
         return jsonify({'error': 'Invalid credentials'}), 401
-    return jsonify({'message': 'Login successful', 'name': user['name']})
+    return jsonify({'message': 'Login successful', 'name': user.name})
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
