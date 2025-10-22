@@ -22,6 +22,24 @@ function CropForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Soil type mapping
+  const soilTypeMap = {
+    "1": "Alluvial",
+    "2": "Black",
+    "3": "Red",
+    "4": "Laterite",
+    "5": "Arid",
+    "6": "Saline",
+    "7": "Peaty",
+    "8": "Forest",
+    "9": "Sandy",
+    "10": "Silty",
+    "11": "Clayey",
+    "12": "Loamy",
+    "13": "Mountain",
+    "14": "Calcareous"
+  };
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       pos => {
@@ -36,7 +54,6 @@ function CropForm() {
     if (form.lat && form.lon) {
       axios.get(`http://api.weatherapi.com/v1/current.json?key=56241786dc064088b3e93535250209&q=${form.lat},${form.lon}`)
         .then(res => {
-          console.log("🌤️ Weather data:", res.data);
           setWeather(res.data.current);
         })
         .catch(err => console.error("Weather fetch error:", err));
@@ -85,10 +102,20 @@ function CropForm() {
         <label>Soil Type</label>
         <select name="soil_type_id" value={form.soil_type_id} onChange={handleChange} required>
           <option value="">Select Soil Type</option>
-          <option value="1">Sandy</option>
-          <option value="2">Loamy</option>
-          <option value="3">Clay</option>
-          <option value="4">Silty</option>
+          <option value="1">Alluvial</option>
+          <option value="2">Black</option>
+          <option value="3">Red</option>
+          <option value="4">Laterite</option>
+          <option value="5">Arid</option>
+          <option value="6">Saline</option>
+          <option value="7">Peaty</option>
+          <option value="8">Forest</option>
+          <option value="9">Sandy</option>
+          <option value="10">Silty</option>
+          <option value="11">Clayey</option>
+          <option value="12">Loamy</option>
+          <option value="13">Mountain</option>
+          <option value="14">Calcareous</option>
         </select>
 
         <label>Sowing Date</label>
@@ -100,7 +127,7 @@ function CropForm() {
       </form>
 
       <WeatherCard weather={weather} lat={form.lat} lon={form.lon} />
-      <SoilCard />
+      <SoilCard soilType={soilTypeMap[form.soil_type_id]} />
       <ResultCard result={result} />
       {error && <p className="error-msg">{error}</p>}
       <ToastContainer />
