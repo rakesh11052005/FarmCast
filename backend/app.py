@@ -17,12 +17,18 @@ CORS(app)
 # ✅ In-memory user store
 users = {}
 
+# ✅ Email confirmation function
 def send_confirmation_email(to_email, name):
     try:
         sender = os.getenv("EMAIL_ADDRESS")
         password = os.getenv("EMAIL_PASSWORD")
         subject = "✅ FarmCast Registration Successful"
-        body = f"Hello {name},\n\nThank you for registering with FarmCast. Your account has been created successfully.\n\nRegards,\nFarmCast Team"
+        body = f"""Hello {name},
+
+Thank you for registering with FarmCast. Your account has been created successfully.
+
+Regards,
+FarmCast Team"""
 
         msg = MIMEMultipart()
         msg['From'] = sender
@@ -31,14 +37,17 @@ def send_confirmation_email(to_email, name):
         msg.attach(MIMEText(body, 'plain'))
 
         server = smtplib.SMTP(os.getenv("EMAIL_HOST"), int(os.getenv("EMAIL_PORT")))
+        server.ehlo()
         server.starttls()
         server.login(sender, password)
         server.send_message(msg)
         server.quit()
+
         print(f"✅ Confirmation email sent to {to_email}")
     except Exception as e:
         print(f"❌ Failed to send email: {e}")
 
+# ✅ Routes
 @app.route('/', methods=['GET'])
 def home():
     return "✅ FarmCast backend is running."
