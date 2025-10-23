@@ -12,6 +12,11 @@ function App() {
     setUserData({ name, email });
   };
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserData({ name: '', email: '' });
+  };
+
   return (
     <div style={{ padding: '2rem', fontFamily: 'Poppins, sans-serif' }}>
       <h2>🌾 FarmCast Yield Predictor</h2>
@@ -21,7 +26,7 @@ function App() {
       ) : (
         <>
           <p>👋 Welcome, {userData.name}!</p>
-          <ProfileCard user={userData} />
+          <ProfileCard user={userData} onLogout={handleLogout} />
           <CropForm />
         </>
       )}

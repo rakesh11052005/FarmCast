@@ -6,6 +6,7 @@ function LoginRegister({ onLoginSuccess }) {
   const [isLogin, setIsLogin] = useState(true);
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -13,10 +14,14 @@ function LoginRegister({ onLoginSuccess }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const endpoint = isLogin ? '/login' : '/register';
+    setMessage('');
+    setLoading(true);
+
+    const endpoint = isLogin ? '/auth/login' : '/auth/register';
 
     if (!form.email || !form.password || (!isLogin && !form.name)) {
       setMessage('⚠️ Please fill in all required fields.');
+      setLoading(false);
       return;
     }
 
@@ -25,10 +30,13 @@ function LoginRegister({ onLoginSuccess }) {
       setMessage(res.data.message);
 
       if (isLogin && res.data.message === 'Login successful') {
-        onLoginSuccess(res.data.name); // ✅ Notify App.jsx
+        onLoginSuccess(res.data.name, form.email); // ✅ Pass name + email
       }
+
+      setLoading(false);
     } catch (err) {
       setMessage(err.response?.data?.error || '❌ Something went wrong.');
+      setLoading(false);
     }
   };
 
@@ -44,15 +52,18 @@ function LoginRegister({ onLoginSuccess }) {
               value={form.name}
               onChange={handleChange}
               placeholder="Your full name"
+              required
             />
           </>
         )}
         <label>Email</label>
         <input
           name="email"
+          type="email"
           value={form.email}
           onChange={handleChange}
           placeholder="you@example.com"
+          required
         />
         <label>Password</label>
         <input
@@ -61,9 +72,10 @@ function LoginRegister({ onLoginSuccess }) {
           value={form.password}
           onChange={handleChange}
           placeholder="••••••••"
+          required
         />
-        <button type="submit">
-          {isLogin ? 'Login' : 'Register'}
+        <button type="submit" disabled={loading}>
+          {loading ? '⏳ Processing...' : isLogin ? 'Login' : 'Register'}
         </button>
       </form>
 

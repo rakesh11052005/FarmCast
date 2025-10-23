@@ -22,22 +22,10 @@ function CropForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Soil type mapping
   const soilTypeMap = {
-    "1": "Alluvial",
-    "2": "Black",
-    "3": "Red",
-    "4": "Laterite",
-    "5": "Arid",
-    "6": "Saline",
-    "7": "Peaty",
-    "8": "Forest",
-    "9": "Sandy",
-    "10": "Silty",
-    "11": "Clayey",
-    "12": "Loamy",
-    "13": "Mountain",
-    "14": "Calcareous"
+    "1": "Alluvial", "2": "Black", "3": "Red", "4": "Laterite", "5": "Arid",
+    "6": "Saline", "7": "Peaty", "8": "Forest", "9": "Sandy", "10": "Silty",
+    "11": "Clayey", "12": "Loamy", "13": "Mountain", "14": "Calcareous"
   };
 
   useEffect(() => {
@@ -74,12 +62,24 @@ function CropForm() {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
+    setError(null);
+    setResult(null);
+
     try {
-      const res = await axios.post('http://localhost:5000/predict-yield', form);
+      const payload = {
+        crop_id: parseInt(form.crop_id),
+        soil_type_id: parseInt(form.soil_type_id),
+        sowing_day: parseInt(form.sowing_day),
+        location_id: 0 // optional default
+      };
+
+      const res = await axios.post('http://localhost:5000/predict/predict-yield', payload);
       setResult(res.data);
-      setError(null);
+      toast.success("✅ Prediction successful!");
     } catch (err) {
+      console.error("Prediction error:", err);
       setError("❌ Prediction failed. Please check inputs or try again.");
+      toast.error("Prediction failed.");
     } finally {
       setLoading(false);
     }
@@ -102,20 +102,9 @@ function CropForm() {
         <label>Soil Type</label>
         <select name="soil_type_id" value={form.soil_type_id} onChange={handleChange} required>
           <option value="">Select Soil Type</option>
-          <option value="1">Alluvial</option>
-          <option value="2">Black</option>
-          <option value="3">Red</option>
-          <option value="4">Laterite</option>
-          <option value="5">Arid</option>
-          <option value="6">Saline</option>
-          <option value="7">Peaty</option>
-          <option value="8">Forest</option>
-          <option value="9">Sandy</option>
-          <option value="10">Silty</option>
-          <option value="11">Clayey</option>
-          <option value="12">Loamy</option>
-          <option value="13">Mountain</option>
-          <option value="14">Calcareous</option>
+          {Object.entries(soilTypeMap).map(([id, name]) => (
+            <option key={id} value={id}>{name}</option>
+          ))}
         </select>
 
         <label>Sowing Date</label>
