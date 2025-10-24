@@ -5,6 +5,27 @@ import json
 
 profile_bp = Blueprint('profile', __name__)
 
+@profile_bp.route('/get-profile', methods=['GET'])
+def get_profile():
+    name = request.args.get('name')
+    if not name:
+        return jsonify({'error': 'Name is required'}), 400
+
+    user = FarmerData.query.filter_by(Name=name).first()
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+
+    return jsonify({
+        'name': user.Name,
+        'email': user.Email,
+        'location': user.Location,
+        'crop': user.Crop,
+        'lastPrediction': user.LastPrediction,
+        'field_size': user.FieldSize,
+        'latitude': user.Latitude,
+        'longitude': user.Longitude
+    })
+
 @profile_bp.route('/update-profile', methods=['PUT'])
 def update_profile():
     data = request.get_json(force=True)

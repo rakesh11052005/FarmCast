@@ -33,7 +33,6 @@ farmcast/
 ├── .env                       # 🔐 Environment variables (API keys, secrets)
 ├── requirements.txt           # 📦 Python dependencies
 ├── train_model.py             # 🧠 ML model training script
-
 ├── backend/                   # 🛠️ Flask backend
 │   ├── app.py                 # 🔁 Main Flask app entry point
 │   ├── config.py              # ⚙️ App and DB configuration
@@ -51,7 +50,6 @@ farmcast/
 │   └── utils/                 # 🧰 Utility functions
 │       ├── predict.py         # 🔮 Prediction logic
 │       └── emailer.py         # 📧 Email notifications (optional)
-
 ├── frontend/                  # 🎨 React frontend
 │   ├── package.json           # 📦 Frontend dependencies
 │   ├── vite.config.js         # ⚡ Vite build config
@@ -74,13 +72,12 @@ farmcast/
 │           ├── ResultCard/    # 📊 Prediction result
 │           ├── SoilCard/      # 🧱 Soil info
 │           └── WeatherCard/   # 🌦️ Weather info
-
 ├── .github/                   # 🧪 GitHub workflows (optional)
 │   └── workflows/
 │       └── deploy.yml         # 🚀 CI/CD pipeline
-
 ├── venv/                      # 🐍 Python virtual environment
 ├── node_modules/              # 📦 Node.js dependencies
+
 ---
 ## ⚙️ Setup Instructions
 

@@ -12,7 +12,7 @@ function ProfileCard({ user, onLogout }) {
 
   useEffect(() => {
     if (user) {
-      setFieldSize(user.fieldSize || '');
+      setFieldSize(user.field_size || '');
       setLatitude(user.latitude || '');
       setLongitude(user.longitude || '');
     }
@@ -57,6 +57,9 @@ function ProfileCard({ user, onLogout }) {
       <p>📍 Location: {user.location || 'Auto-detected'}</p>
       <p>🌱 Preferred Crop: {user.crop || 'Not set'}</p>
       <p>🗓️ Last Prediction: {user.lastPrediction || 'None yet'}</p>
+      <p>📐 Field Size: {fieldSize ? `${fieldSize} acres` : 'Not set'}</p>
+      <p>🌍 Latitude: {latitude || 'Not available'}</p>
+      <p>🌍 Longitude: {longitude || 'Not available'}</p>
 
       <button className="toggle-manage" onClick={() => setShowActions(!showActions)}>
         {showActions ? '🔽 Hide Options' : '⚙️ Manage Profile'}
