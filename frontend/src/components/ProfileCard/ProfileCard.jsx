@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ProfileCard.css';
 
-function ProfileCard({ user, onLogout }) {
+function ProfileCard({ user, onLogout, onUserUpdate }) {
   const [fieldSize, setFieldSize] = useState('');
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
@@ -22,13 +22,16 @@ function ProfileCard({ user, onLogout }) {
 
   const handleUpdate = async () => {
     try {
-      const res = await axios.put('http://localhost:5000/profile/update-profile', {
+      await axios.put('http://localhost:5000/profile/update-profile', {
         name: user.name,
         field_size: parseFloat(fieldSize) || 0,
         latitude: parseFloat(latitude) || 0,
         longitude: parseFloat(longitude) || 0
       });
-      setMessage(res.data.message);
+
+      const refreshed = await axios.get(`http://localhost:5000/get-profile?name=${user.name}`);
+      if (onUserUpdate) onUserUpdate(refreshed.data); // ✅ update parent user state
+      setMessage('✅ Profile updated successfully');
       setIsEditing(false);
     } catch (err) {
       setMessage(err.response?.data?.error || '❌ Failed to update profile.');
@@ -57,9 +60,9 @@ function ProfileCard({ user, onLogout }) {
       <p>📍 Location: {user.location || 'Auto-detected'}</p>
       <p>🌱 Preferred Crop: {user.crop || 'Not set'}</p>
       <p>🗓️ Last Prediction: {user.lastPrediction || 'None yet'}</p>
-      <p>📐 Field Size: {fieldSize ? `${fieldSize} acres` : 'Not set'}</p>
-      <p>🌍 Latitude: {latitude || 'Not available'}</p>
-      <p>🌍 Longitude: {longitude || 'Not available'}</p>
+      <p>📐 Field Size: {user.field_size ? `${user.field_size} acres` : 'Not set'}</p>
+      <p>🌍 Latitude: {user.latitude || 'Not available'}</p>
+      <p>🌍 Longitude: {user.longitude || 'Not available'}</p>
 
       <button className="toggle-manage" onClick={() => setShowActions(!showActions)}>
         {showActions ? '🔽 Hide Options' : '⚙️ Manage Profile'}

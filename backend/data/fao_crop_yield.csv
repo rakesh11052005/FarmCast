@@ -1,0 +1,514 @@
+faostat,m49_code,country_name_en,item_code,item,year,yield_kg_ha,yield_kg_ha_flag,production_tonnes,production_tonnes_flag,area_harvested_ha,area_harvested_ha_flag
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1964,,,18500.000000,E,15000.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1990,,,21610.000000,A,15576.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2012,,,16000.000000,E,17500.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1982,,,28500.000000,A,22100.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2006,,,20406.080000,I,17397.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2014,,,3800.000000,E,8500.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1978,,,11200.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1980,,,11400.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2003,,,6931.820000,I,14129.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2019,,,3638.950000,E,7852.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2006,,,6085.230000,I,12679.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1977,,,11100.000000,E,10000.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2015,,,4286.990000,I,3185.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1986,,,5852.000000,A,3039.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2007,,,3850.000000,E,2850.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2016,,,4312.560000,I,3182.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1965,,,0.000000,A,0.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1961,,,0.000000,A,0.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1994,,,9057.000000,A,8610.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1968,,,3300.000000,A,5000.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2004,,,2818.150000,I,4153.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2000,,,2415.000000,A,3500.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2002,,,3020.080000,I,4210.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1974,,,3700.000000,A,6167.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2021,,,1584.970000,E,3809.000000,E
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1989,,,8556.000000,A,9940.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1961,,,3400.000000,A,5000.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1971,,,3300.000000,A,5000.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2010,,,2114.230000,I,4034.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1978,,,950.000000,E,1100.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1962,,,500.000000,E,500.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2008,,,123.850000,I,172.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1971,,,731.000000,A,875.000000,A
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2001,,,140.000000,E,165.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1995,,,130.000000,E,140.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1990,,,99.000000,E,120.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2021,,,6138.450000,E,13412.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1995,,,7900.000000,E,7949.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2009,,,7137.760000,I,10948.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1962,,,400.000000,A,500.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1987,,,3000.000000,E,3900.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1967,,,400.000000,A,600.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1977,,,2250.000000,A,3500.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1995,,,3900.000000,E,4800.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1992,,,3500.000000,E,4500.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2006,,,4400.000000,E,5400.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1978,,,2300.000000,E,3500.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1982,,,3601.000000,A,3290.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1964,,,2424.000000,A,2520.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1989,,,3500.000000,E,3300.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1966,,,2662.000000,A,3010.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2023,,,3995.950000,I,4180.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1977,,,2680.000000,A,2630.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1990,,,3191.000000,E,3216.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1985,,,23790.000000,A,17930.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2022,,,14806.290000,E,19802.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2007,,,19918.020000,I,17367.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1972,,,26700.000000,A,20500.000000,A
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2018,,,3603.070000,E,8101.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1966,,,10000.000000,X,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1962,,,8800.000000,X,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1989,,,12000.000000,E,10000.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1978,,,3610.000000,A,2241.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2005,,,3465.000000,A,2839.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1987,,,4757.000000,A,2947.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1975,,,0.000000,A,0.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1983,,,8212.000000,A,3625.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1969,,,0.000000,A,0.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1977,,,5667.000000,A,8823.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1983,,,6700.000000,E,10220.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1970,,,3264.000000,A,4980.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1988,,,7511.000000,A,9930.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1963,,,3700.000000,A,5700.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1969,,,3264.000000,A,4980.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1991,,,9145.000000,A,9930.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1992,,,9900.000000,A,10080.000000,A
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2022,,,121.540000,E,203.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1981,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2001,,,9162.410000,I,9607.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2010,,,6894.190000,I,11287.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1969,,,400.000000,A,600.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2005,,,4391.970000,I,5311.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2020,,,5327.350000,I,5737.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2021,,,5299.740000,I,5678.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1997,,,4000.000000,E,4900.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1971,,,800.000000,E,1200.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1964,,,400.000000,A,600.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1975,,,2133.000000,A,3100.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1981,,,2400.000000,E,3500.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2007,,,4441.150000,I,5334.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2012,,,5000.000000,E,5560.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1987,,,3398.000000,A,3200.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2009,,,3985.080000,I,3952.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2022,,,3993.980000,I,4177.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1997,,,3978.510000,I,3823.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1996,,,4000.000000,E,3800.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2007,,,3993.820000,I,3965.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2010,,,3981.770000,I,3949.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2015,,,3989.590000,I,4009.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1994,,,2780.310000,I,2660.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2008,,,19187.470000,I,17648.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1978,,,35100.000000,A,23900.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1963,,,18000.000000,E,14500.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1994,,,21353.000000,A,15388.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1981,,,31000.000000,A,23500.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1977,,,39200.000000,A,25400.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2023,,,14878.100000,E,19567.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2018,,,15262.830000,E,19100.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1983,,,27100.000000,A,21500.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1974,,,33000.000000,A,22000.000000,A
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2002,,,7220.100000,I,14560.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1993,,,10069.210000,I,18535.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2004,,,6646.940000,I,13666.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1972,,,10500.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1981,,,11500.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2022,,,3616.270000,E,7932.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1981,,,5989.000000,A,3302.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2002,,,2300.000000,E,2700.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2006,,,3440.320000,I,2813.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1968,,,0.000000,A,0.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1977,,,3517.000000,A,2183.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2017,,,4406.360000,I,3268.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2019,,,4580.670000,I,3372.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2023,,,4541.730000,E,3400.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1991,,,3173.000000,A,2240.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1985,,,5378.000000,A,8184.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2008,,,2325.500000,I,4069.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1998,,,4140.000000,A,4200.000000,A
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1988,,,294.000000,A,300.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2009,,,121.640000,I,171.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1984,,,530.000000,E,600.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2020,,,6181.830000,E,13500.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2017,,,6311.980000,E,13766.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2018,,,6279.210000,E,13487.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1999,,,9000.000000,E,9000.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1972,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1967,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2004,,,8886.470000,I,10060.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2013,,,6000.000000,E,12000.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1985,,,1600.000000,E,1587.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2011,,,4846.950000,I,5565.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1966,,,400.000000,A,600.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1961,,,400.000000,A,500.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2013,,,5250.000000,E,5600.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2009,,,4602.530000,I,5408.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1985,,,2800.000000,E,3800.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1991,,,3400.000000,E,4400.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1986,,,2900.000000,E,3900.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1978,,,3280.000000,A,3500.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2005,,,4002.790000,I,3979.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2006,,,3998.470000,I,3972.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1998,,,23125.000000,A,18311.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1995,,,29149.000000,A,18153.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1967,,,21000.000000,E,16900.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1973,,,29700.000000,A,21200.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1969,,,22100.000000,E,17800.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1961,,,17000.000000,E,13500.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2020,,,14907.580000,E,19325.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1969,,,10500.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1997,,,8735.010000,I,16727.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1971,,,10500.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2017,,,3548.650000,I,7957.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1990,,,7423.000000,E,8863.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1963,,,10000.000000,X,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1961,,,11100.000000,X,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1983,,,11600.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2013,,,4000.000000,E,8600.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1994,,,9723.480000,I,18074.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1995,,,9386.180000,I,17619.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2008,,,3800.000000,E,2900.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1993,,,2200.000000,E,1900.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2001,,,2721.730000,I,2650.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1973,,,0.000000,A,0.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1990,,,2141.000000,A,1893.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1963,,,0.000000,A,0.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2013,,,4200.000000,E,3000.000000,E
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1993,,,9800.000000,E,10000.000000,E
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2003,,,2938.410000,I,4202.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1997,,,5520.000000,A,4200.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2015,,,1541.550000,I,4081.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1996,,,5962.000000,A,5600.000000,A
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1976,,,900.000000,E,1100.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2011,,,117.400000,I,172.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1965,,,500.000000,E,500.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1979,,,950.000000,E,1100.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1998,,,150.000000,E,160.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2008,,,7390.550000,I,10646.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1993,,,12000.000000,E,12057.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1987,,,4700.000000,E,4698.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1984,,,2800.000000,E,2773.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1982,,,2500.000000,E,3600.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2003,,,4250.000000,E,5200.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2016,,,5255.890000,I,5793.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1976,,,2190.000000,A,3200.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2017,,,5191.640000,I,5687.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2022,,,5327.990000,I,5681.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1972,,,2536.000000,A,2560.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2020,,,4008.700000,I,4084.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1979,,,3900.000000,A,3800.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2001,,,18473.000000,A,16802.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2003,,,20508.000000,A,17094.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1980,,,37100.000000,A,25700.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2005,,,22000.000000,E,17500.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1996,,,33416.000000,A,22176.000000,A
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1968,,,10500.000000,X,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1982,,,11600.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1992,,,10423.790000,I,19003.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2009,,,5259.910000,I,11185.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2012,,,4000.000000,E,8600.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1970,,,10500.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1996,,,9056.850000,I,17170.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1991,,,11500.000000,E,20766.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2009,,,3900.000000,E,3101.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1988,,,3448.000000,A,3017.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1974,,,0.000000,A,0.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1998,,,2100.000000,E,2400.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2014,,,4248.910000,I,3139.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2003,,,2300.000000,E,2700.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2021,,,4580.650000,I,3356.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1967,,,0.000000,A,0.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2007,,,2439.830000,I,4085.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2020,,,1572.070000,E,3822.000000,E
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1986,,,4628.000000,A,8071.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1987,,,7250.000000,A,9940.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2017,,,1533.360000,I,3858.000000,E
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1980,,,7376.000000,A,8626.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1966,,,3300.000000,A,5000.000000,A
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1981,,,950.000000,E,1100.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1996,,,140.000000,E,150.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1994,,,120.000000,E,132.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2018,,,121.910000,I,212.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1964,,,500.000000,E,500.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1963,,,500.000000,E,500.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1985,,,350.000000,E,400.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1983,,,4800.000000,E,4766.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2019,,,5954.300000,I,13248.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2005,,,8923.850000,I,10459.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2006,,,7899.680000,I,10170.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1991,,,12100.000000,E,12157.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1990,,,12000.000000,E,12035.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1979,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1992,,,7100.000000,E,7192.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1994,,,15700.000000,E,15743.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2014,,,5486.510000,I,5959.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1998,,,4044.390000,I,4976.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1993,,,3700.000000,E,4600.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1998,,,3990.910000,I,3864.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2021,,,3992.010000,I,4154.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1985,,,3328.000000,A,3150.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1962,,,2450.000000,A,2990.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1981,,,3758.000000,A,3280.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1976,,,42000.000000,A,28000.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2009,,,18624.220000,I,17724.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2021,,,14920.430000,E,19573.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2017,,,14869.020000,I,18949.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2002,,,19884.000000,A,17391.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2019,,,14590.870000,I,19445.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1984,,,23730.000000,A,17980.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1979,,,33800.000000,A,23500.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2013,,,16000.000000,E,17500.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1991,,,35080.000000,A,17096.000000,A
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2011,,,4726.630000,I,10148.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1973,,,10700.000000,E,10000.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1989,,,3571.000000,A,3207.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2004,,,4963.000000,A,2754.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1992,,,2426.000000,A,2310.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2011,,,3906.460000,I,3063.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2000,,,2310.000000,E,2600.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1994,,,2253.020000,I,2000.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1970,,,0.000000,A,0.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1975,,,4189.000000,A,6294.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1981,,,7616.000000,A,9423.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1962,,,3300.000000,A,5000.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2011,,,2019.840000,I,4006.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2022,,,1585.190000,E,3811.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2004,,,132.990000,I,169.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1980,,,950.000000,E,1100.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2003,,,135.330000,I,167.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1987,,,289.000000,A,300.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1997,,,8600.000000,E,8649.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1998,,,9000.000000,E,9000.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1969,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2015,,,6442.160000,I,15078.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1970,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2000,,,10000.000000,E,10000.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1983,,,2600.000000,E,3700.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1972,,,1200.000000,E,1800.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1989,,,3200.000000,E,4200.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2001,,,4150.000000,E,5100.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1973,,,1600.000000,E,2500.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1974,,,2700.000000,A,2600.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1976,,,1393.000000,A,2438.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2004,,,4006.390000,I,3984.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1971,,,2400.000000,A,2730.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1999,,,3999.850000,I,3901.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2013,,,4000.000000,E,4000.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1987,,,23520.000000,A,19300.000000,A
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2005,,,6364.900000,I,13174.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1974,,,10800.000000,E,10000.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1997,,,1900.000000,E,1773.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1971,,,0.000000,A,0.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1979,,,4487.000000,A,2456.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1996,,,1800.000000,E,1637.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1980,,,6081.000000,A,3244.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1984,,,6302.000000,A,3200.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1995,,,1000.000000,E,1000.000000,E
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1964,,,3300.000000,A,5000.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2012,,,1850.000000,E,4000.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1992,,,110.910000,I,124.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1977,,,930.000000,E,1100.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1961,,,500.000000,E,500.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2016,,,120.010000,E,198.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2000,,,145.000000,E,160.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2006,,,128.690000,I,170.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2010,,,119.510000,I,172.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2013,,,115.000000,E,180.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1964,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2003,,,8990.250000,I,9876.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2016,,,6083.490000,I,13576.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1968,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1978,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1982,,,3400.000000,E,3383.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2004,,,4350.000000,E,5300.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1970,,,400.000000,A,600.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1980,,,2400.000000,E,3500.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1963,,,400.000000,A,500.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2002,,,4200.000000,E,5150.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1970,,,2408.000000,A,2790.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1983,,,3400.000000,A,3230.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2018,,,4002.840000,I,3998.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2008,,,3989.230000,I,3957.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2011,,,3979.690000,I,3950.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1975,,,1759.000000,A,2470.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1993,,,23054.000000,A,16006.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2000,,,19355.000000,A,17987.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1997,,,35570.000000,A,20995.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2004,,,21498.000000,A,17294.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1999,,,21303.000000,A,17098.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1992,,,21678.000000,A,14663.000000,A
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1986,,,11800.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1999,,,8111.870000,I,15854.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1964,,,10000.000000,X,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2021,,,3612.970000,E,7975.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2016,,,3765.140000,E,8362.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1962,,,0.000000,A,0.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1964,,,0.000000,A,0.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1976,,,0.000000,A,0.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1972,,,3495.000000,A,5245.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1982,,,7200.000000,E,10220.000000,A
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1967,,,600.000000,E,600.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1993,,,110.000000,E,130.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1982,,,850.000000,E,1000.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1991,,,111.320000,I,118.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2005,,,130.670000,I,170.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2002,,,9082.810000,I,9728.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2022,,,6091.530000,E,13387.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1996,,,8000.000000,E,8029.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2023,,,5357.760000,I,5686.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2015,,,5302.650000,I,5782.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1994,,,3800.000000,E,4700.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1988,,,3500.000000,E,3300.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1971,,,24100.000000,A,19300.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1986,,,23920.000000,A,17900.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1975,,,49900.000000,A,36200.000000,A
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1985,,,11800.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2007,,,5807.710000,I,12183.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1999,,,2200.000000,E,2600.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2020,,,4493.060000,E,3389.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2009,,,2216.240000,I,4054.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2014,,,1592.350000,I,3747.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2001,,,2500.000000,E,3600.000000,E
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1979,,,6114.000000,A,9423.000000,A
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2007,,,126.450000,I,170.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1999,,,150.000000,E,170.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1969,,,731.000000,A,771.000000,A
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2021,,,121.630000,E,205.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1989,,,100.000000,A,115.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2011,,,6662.440000,I,11660.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1961,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1988,,,4600.000000,E,4612.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1966,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1977,,,,M,,M
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1988,,,3100.000000,E,4000.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1974,,,2000.000000,E,3000.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1979,,,2400.000000,E,3600.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1980,,,4377.000000,A,3340.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1993,,,3935.240000,I,3833.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2017,,,4002.130000,I,4020.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1968,,,2748.000000,A,2950.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1992,,,3944.270000,I,3979.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2001,,,4008.930000,I,3953.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2015,,,15613.190000,I,18234.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1966,,,19600.000000,E,15800.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1962,,,17500.000000,E,14000.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2011,,,17493.660000,I,17869.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2000,,,7809.480000,I,15421.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2020,,,3596.890000,E,7970.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1987,,,11900.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2015,,,3495.410000,I,7985.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1982,,,7765.000000,A,3525.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1972,,,0.000000,A,0.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1995,,,1700.000000,E,1525.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1965,,,3300.000000,A,5000.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1984,,,5461.000000,A,8310.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2019,,,1598.540000,E,3803.000000,E
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2023,,,1580.740000,E,3814.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2017,,,121.680000,E,194.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1975,,,850.000000,E,1000.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1986,,,260.000000,E,300.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1973,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1971,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1965,,,,M,,M
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2019,,,5097.860000,I,5515.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2008,,,4517.860000,I,5364.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1969,,,2441.000000,A,2800.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1984,,,3348.000000,A,3170.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1973,,,2518.000000,A,2560.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2012,,,4000.000000,E,4000.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2014,,,4000.000000,E,4000.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2016,,,15306.280000,I,18613.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1968,,,22000.000000,E,17700.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1970,,,23400.000000,E,18800.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2001,,,7512.440000,I,14991.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2022,,,4551.460000,E,3378.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1973,,,3700.000000,A,5500.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2006,,,2556.000000,I,4104.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1974,,,800.000000,E,970.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1973,,,800.000000,E,970.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1968,,,700.000000,E,700.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2015,,,125.020000,I,213.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1963,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1986,,,4100.000000,E,4100.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2007,,,7648.280000,I,10385.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1984,,,2700.000000,E,3800.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2019,,,4007.710000,I,4009.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2002,,,4009.850000,I,3970.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2000,,,4005.730000,I,3931.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2014,,,15929.550000,I,18068.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1967,,,10500.000000,X,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1965,,,10000.000000,X,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1988,,,11900.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1998,,,8420.190000,I,16289.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2008,,,5532.450000,I,11684.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2018,,,1584.290000,E,3804.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2012,,,115.000000,E,180.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1970,,,731.000000,A,840.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1989,,,10500.000000,E,10589.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1980,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2012,,,6000.000000,E,12000.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1990,,,3300.000000,E,4300.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1965,,,400.000000,A,600.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1968,,,400.000000,A,600.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1995,,,3800.000000,E,3600.000000,E
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1965,,,19000.000000,E,15500.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1979,,,11300.000000,E,10000.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2010,,,3835.040000,I,3033.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1985,,,6077.000000,A,3092.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1990,,,9140.000000,A,9940.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2013,,,1900.000000,E,4000.000000,E
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2016,,,1677.970000,E,3746.000000,I
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",2005,,,2701.170000,I,4119.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2002,,,137.680000,I,166.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1966,,,600.000000,E,600.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2019,,,121.340000,I,201.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1975,,,,M,,M
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1962,,,,M,,M
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1996,,,3945.680000,I,4879.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2010,,,4711.960000,I,5475.000000,I
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1999,,,4100.000000,E,5000.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2003,,,4008.870000,I,3981.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1988,,,23900.000000,A,19540.000000,A
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1976,,,11000.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2010,,,4990.930000,I,10576.000000,I
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1975,,,10900.000000,E,10000.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",2023,,,3608.710000,E,7959.000000,E
+49,192,Cuba,800,"Agave fibres, raw, n.e.c.",1984,,,11700.000000,E,10000.000000,E
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",1966,,,0.000000,A,0.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1967,,,3300.000000,A,5000.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1999,,,2730.000000,A,3710.000000,A
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1997,,,150.000000,E,160.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2023,,,121.600000,E,204.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1983,,,680.000000,E,800.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2014,,,120.000000,E,200.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2023,,,6137.270000,E,13433.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2014,,,6410.310000,I,13649.000000,I
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1976,,,,M,,M
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1967,,,2748.000000,A,3040.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1963,,,2400.000000,A,2910.000000,A
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",2010,,,18055.630000,I,17794.000000,I
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2018,,,4492.170000,I,3321.000000,I
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2020,,,121.640000,E,202.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1974,,,,M,,M
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2018,,,5130.310000,I,5577.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1965,,,2521.000000,A,2720.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1961,,,2200.000000,A,2600.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",2016,,,3997.640000,I,4031.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1991,,,3943.150000,I,4115.000000,I
+44,170,Colombia,800,"Agave fibres, raw, n.e.c.",1989,,,23980.000000,A,20770.000000,A
+58,218,Ecuador,800,"Agave fibres, raw, n.e.c.",2012,,,4000.000000,E,3000.000000,E
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1978,,,5925.000000,A,8950.000000,A
+60,222,El Salvador,800,"Agave fibres, raw, n.e.c.",1976,,,5307.000000,A,8706.000000,A
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",2000,,,4122.990000,I,5054.000000,I
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1986,,,3384.000000,A,3200.000000,A
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1972,,,750.000000,E,900.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",2009,,,121.000000,E,175.000000,E
+89,320,Guatemala,800,"Agave fibres, raw, n.e.c.",1995,,,140.000000,E,150.000000,E
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",1990,,,11000.000000,E,11200.000000,A
+138,484,Mexico,800,"Agave fibres, raw, n.e.c.",2009,,,7000.000000,E,12500.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1992,,,3500.000000,E,4500.000000,E
+157,558,Nicaragua,800,"Agave fibres, raw, n.e.c.",1966,,,400.000000,A,600.000000,A
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1994,,,3850.000000,E,3650.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1989,,,3450.000000,E,3250.000000,E
+171,608,Philippines,800,"Agave fibres, raw, n.e.c.",1972,,,2465.000000,A,2650.000000,A
