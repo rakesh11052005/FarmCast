@@ -62,7 +62,7 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
       onClick={() => setIsExpanded(!isExpanded)}
     >
       <div className="profile-header">
-        <h3> {profile.name}</h3>
+        <h3> (Profile)--{profile.name}</h3>
       </div>
 
       <div className={`profile-details ${isExpanded ? 'visible' : 'hidden'}`}>

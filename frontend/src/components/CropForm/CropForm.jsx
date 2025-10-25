@@ -2,12 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import WeatherCard from '../WeatherCard/WeatherCard';
-import SoilCard from '../SoilCard/SoilCard';
-import ResultCard from '../ResultCard/ResultCard';
 import './CropForm.css';
 
-function CropForm() {
+function CropForm({ onWeatherUpdate, onPredictionUpdate }) {
   const [form, setForm] = useState({
     crop_id: '',
     soil_type_id: '',
@@ -17,8 +14,6 @@ function CropForm() {
   });
 
   const [sowingDate, setSowingDate] = useState('');
-  const [result, setResult] = useState(null);
-  const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -42,11 +37,11 @@ function CropForm() {
     if (form.lat && form.lon) {
       axios.get(`http://api.weatherapi.com/v1/current.json?key=56241786dc064088b3e93535250209&q=${form.lat},${form.lon}`)
         .then(res => {
-          setWeather(res.data.current);
+          onWeatherUpdate(res.data.current); // ✅ Pass weather to App.jsx
         })
         .catch(err => console.error("Weather fetch error:", err));
     }
-  }, [form.lat, form.lon]);
+  }, [form.lat, form.lon, onWeatherUpdate]);
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -63,18 +58,20 @@ function CropForm() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    setResult(null);
 
     try {
       const payload = {
         crop_id: parseInt(form.crop_id),
         soil_type_id: parseInt(form.soil_type_id),
         sowing_day: parseInt(form.sowing_day),
-        location_id: 0 // optional default
+        location_id: 0
       };
 
       const res = await axios.post('http://localhost:5000/predict/predict-yield', payload);
-      setResult(res.data);
+      onPredictionUpdate({
+        result: res.data,
+        soilType: soilTypeMap[form.soil_type_id]
+      }); // ✅ Pass result + soilType to App.jsx
       toast.success("✅ Prediction successful!");
     } catch (err) {
       console.error("Prediction error:", err);
@@ -115,9 +112,6 @@ function CropForm() {
         </button>
       </form>
 
-      <WeatherCard weather={weather} lat={form.lat} lon={form.lon} />
-      <SoilCard soilType={soilTypeMap[form.soil_type_id]} />
-      <ResultCard result={result} />
       {error && <p className="error-msg">{error}</p>}
       <ToastContainer />
     </div>
