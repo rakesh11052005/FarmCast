@@ -9,12 +9,14 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
   const [message, setMessage] = useState('');
   const [showActions, setShowActions] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [profile, setProfile] = useState(user);
 
   useEffect(() => {
+    setProfile(user);
     if (user) {
-      setFieldSize(user.field_size || '');
-      setLatitude(user.latitude || '');
-      setLongitude(user.longitude || '');
+      setFieldSize(user.field_size ?? '');
+      setLatitude(user.latitude ?? '');
+      setLongitude(user.longitude ?? '');
     }
   }, [user]);
 
@@ -22,6 +24,7 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
 
   const handleUpdate = async () => {
     try {
+      console.log("🔄 Updating profile for:", user.name);
       await axios.put('http://localhost:5000/profile/update-profile', {
         name: user.name,
         field_size: parseFloat(fieldSize) || 0,
@@ -29,11 +32,14 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
         longitude: parseFloat(longitude) || 0
       });
 
-      const refreshed = await axios.get(`http://localhost:5000/get-profile?name=${user.name}`);
-      if (onUserUpdate) onUserUpdate(refreshed.data); // ✅ update parent user state
+      const refreshed = await axios.get(`http://localhost:5000/profile/get-profile?name=${user.name}`);
+      console.log("✅ Refreshed profile:", refreshed.data);
+      setProfile(refreshed.data); // ✅ update local state
+      if (onUserUpdate) onUserUpdate(refreshed.data);
       setMessage('✅ Profile updated successfully');
       setIsEditing(false);
     } catch (err) {
+      console.error("❌ Update error:", err);
       setMessage(err.response?.data?.error || '❌ Failed to update profile.');
     }
   };
@@ -49,20 +55,25 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
       setMessage(res.data.message);
       if (onLogout) onLogout();
     } catch (err) {
+      console.error("❌ Delete error:", err);
       setMessage(err.response?.data?.error || '❌ Failed to delete account.');
     }
   };
 
   return (
     <div className="profile-card">
-      <h3>🧑‍🌾 Welcome, {user.name}</h3>
-      <p>📧 Email: {user.email}</p>
-      <p>📍 Location: {user.location || 'Auto-detected'}</p>
-      <p>🌱 Preferred Crop: {user.crop || 'Not set'}</p>
-      <p>🗓️ Last Prediction: {user.lastPrediction || 'None yet'}</p>
-      <p>📐 Field Size: {user.field_size ? `${user.field_size} acres` : 'Not set'}</p>
-      <p>🌍 Latitude: {user.latitude || 'Not available'}</p>
-      <p>🌍 Longitude: {user.longitude || 'Not available'}</p>
+      <div className="profile-header">
+        <h3>🧑‍🌾 Welcome, {profile.name}</h3>
+        <button className="logout-button" onClick={onLogout}>🚪 Logout</button>
+      </div>
+
+      <p>📧 Email: {profile.email}</p>
+      <p>📍 Location: {profile.location || 'Auto-detected'}</p>
+      <p>🌱 Preferred Crop: {profile.crop || 'Not set'}</p>
+      <p>🗓️ Last Prediction: {profile.lastPrediction || 'None yet'}</p>
+      <p>📐 Field Size: {profile.field_size !== undefined ? `${profile.field_size} acres` : 'Not set'}</p>
+      <p>🌍 Latitude: {profile.latitude !== undefined ? profile.latitude : 'Not available'}</p>
+      <p>🌍 Longitude: {profile.longitude !== undefined ? profile.longitude : 'Not available'}</p>
 
       <button className="toggle-manage" onClick={() => setShowActions(!showActions)}>
         {showActions ? '🔽 Hide Options' : '⚙️ Manage Profile'}
