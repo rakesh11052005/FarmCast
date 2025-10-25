@@ -7,7 +7,7 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [message, setMessage] = useState('');
-  const [showActions, setShowActions] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [profile, setProfile] = useState(user);
 
@@ -24,7 +24,6 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
 
   const handleUpdate = async () => {
     try {
-      console.log("🔄 Updating profile for:", user.name);
       await axios.put('http://localhost:5000/profile/update-profile', {
         name: user.name,
         field_size: parseFloat(fieldSize) || 0,
@@ -33,13 +32,11 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
       });
 
       const refreshed = await axios.get(`http://localhost:5000/profile/get-profile?name=${user.name}`);
-      console.log("✅ Refreshed profile:", refreshed.data);
-      setProfile(refreshed.data); // ✅ update local state
+      setProfile(refreshed.data);
       if (onUserUpdate) onUserUpdate(refreshed.data);
       setMessage('✅ Profile updated successfully');
       setIsEditing(false);
     } catch (err) {
-      console.error("❌ Update error:", err);
       setMessage(err.response?.data?.error || '❌ Failed to update profile.');
     }
   };
@@ -55,70 +52,66 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
       setMessage(res.data.message);
       if (onLogout) onLogout();
     } catch (err) {
-      console.error("❌ Delete error:", err);
       setMessage(err.response?.data?.error || '❌ Failed to delete account.');
     }
   };
 
   return (
-    <div className="profile-card">
+    <div
+      className={`profile-card ${isExpanded ? 'expanded' : 'collapsed'}`}
+      onClick={() => setIsExpanded(!isExpanded)}
+    >
       <div className="profile-header">
-        <h3>🧑‍🌾 Welcome, {profile.name}</h3>
-        <button className="logout-button" onClick={onLogout}>🚪 Logout</button>
+        <h3> {profile.name}</h3>
       </div>
 
-      <p>📧 Email: {profile.email}</p>
-      <p>📍 Location: {profile.location || 'Auto-detected'}</p>
-      <p>🌱 Preferred Crop: {profile.crop || 'Not set'}</p>
-      <p>🗓️ Last Prediction: {profile.lastPrediction || 'None yet'}</p>
-      <p>📐 Field Size: {profile.field_size !== undefined ? `${profile.field_size} acres` : 'Not set'}</p>
-      <p>🌍 Latitude: {profile.latitude !== undefined ? profile.latitude : 'Not available'}</p>
-      <p>🌍 Longitude: {profile.longitude !== undefined ? profile.longitude : 'Not available'}</p>
+      <div className={`profile-details ${isExpanded ? 'visible' : 'hidden'}`}>
+        <p>📧 Email: {profile.email}</p>
+        <p>📍 Location: {profile.location || 'Auto-detected'}</p>
+        <p>🌱 Preferred Crop: {profile.crop || 'Not set'}</p>
+        <p>🗓️ Last Prediction: {profile.lastPrediction || 'None yet'}</p>
+        <p>📐 Field Size: {profile.field_size !== undefined ? `${profile.field_size} acres` : 'Not set'}</p>
+        <p>🌍 Latitude: {profile.latitude !== undefined ? profile.latitude : 'Not available'}</p>
+        <p>🌍 Longitude: {profile.longitude !== undefined ? profile.longitude : 'Not available'}</p>
 
-      <button className="toggle-manage" onClick={() => setShowActions(!showActions)}>
-        {showActions ? '🔽 Hide Options' : '⚙️ Manage Profile'}
-      </button>
+        <div className="button-row">
+          <button onClick={onLogout}>🚪 Logout</button>
+          <button onClick={(e) => { e.stopPropagation(); setIsEditing(true); }}>✏️ Edit</button>
+          <button onClick={(e) => { e.stopPropagation(); handleDelete(); }}>🗑️ Delete</button>
+        </div>
 
-      {showActions && (
-        <>
-          {isEditing ? (
-            <div className="edit-fields">
-              <label>📐 Field Size (acres)</label>
-              <input
-                type="number"
-                value={fieldSize}
-                onChange={e => setFieldSize(e.target.value)}
-                placeholder="Enter field size"
-              />
-              <label>🧭 Latitude</label>
-              <input
-                type="number"
-                value={latitude}
-                onChange={e => setLatitude(e.target.value)}
-                placeholder="Enter latitude"
-              />
-              <label>🧭 Longitude</label>
-              <input
-                type="number"
-                value={longitude}
-                onChange={e => setLongitude(e.target.value)}
-                placeholder="Enter longitude"
-              />
-              <div className="button-row">
-                <button onClick={handleUpdate}>✅ Save</button>
-                <button onClick={() => setIsEditing(false)}>❌ Cancel</button>
-              </div>
-            </div>
-          ) : (
+        {isEditing && (
+          <div className="edit-fields" onClick={(e) => e.stopPropagation()}>
+            <label>📐 Field Size (acres)</label>
+            <input
+              type="number"
+              value={fieldSize}
+              onChange={e => setFieldSize(e.target.value)}
+              placeholder="Enter field size"
+            />
+            <label>🧭 Latitude</label>
+            <input
+              type="number"
+              value={latitude}
+              onChange={e => setLatitude(e.target.value)}
+              placeholder="Enter latitude"
+            />
+            <label>🧭 Longitude</label>
+            <input
+              type="number"
+              value={longitude}
+              onChange={e => setLongitude(e.target.value)}
+              placeholder="Enter longitude"
+            />
             <div className="button-row">
-              <button onClick={() => setIsEditing(true)}>✏️ Edit Field Info</button>
-              <button onClick={handleDelete}>🗑️ Delete Account</button>
+              <button onClick={handleUpdate}>✅ Save</button>
+              <button onClick={() => setIsEditing(false)}>❌ Cancel</button>
             </div>
-          )}
-        </>
-      )}
+          </div>
+        )}
 
-      {message && <p className="profile-message">{message}</p>}
+        {message && <p className="profile-message">{message}</p>}
+      </div>
     </div>
   );
 }

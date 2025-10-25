@@ -3,24 +3,23 @@
   padding: 2rem;
   margin-top: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.756);
   font-family: 'Poppins', sans-serif;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, max-height 0.4s ease;
+  cursor: pointer;
 }
 
 .profile-card:hover {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
-/* ✅ Header with name and logout button */
 .profile-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
 }
 
 .profile-header h3 {
@@ -29,27 +28,48 @@
   font-size: 1.5rem;
 }
 
-/* ✅ Logout button styling */
-.logout-button {
-  background-color: #ff4d4d;
+.profile-details {
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.profile-details.hidden {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.profile-details.visible {
+  max-height: 1000px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.profile-details p {
+  margin: 0.5rem 0;
+  color: #555;
+  font-size: 1rem;
+}
+
+.button-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.button-row button {
+  padding: 0.6rem 1rem;
+  background-color: #0077cc;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
   border-radius: 6px;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
-.logout-button:hover {
-  background-color: #e60000;
-}
-
-.profile-card p {
-  margin: 0.5rem 0;
-  color: #555;
-  font-size: 1rem;
+.button-row button:hover {
+  background-color: #005fa3;
 }
 
 .edit-fields {
@@ -75,22 +95,6 @@
 .edit-fields input:focus {
   border-color: #0077cc;
   outline: none;
-}
-
-.profile-card button {
-  margin-top: 0.5rem;
-  padding: 0.6rem 1rem;
-  background-color: #0077cc;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.profile-card button:hover {
-  background-color: #005fa3;
 }
 
 .profile-message {
