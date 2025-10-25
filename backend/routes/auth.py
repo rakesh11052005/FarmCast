@@ -3,6 +3,7 @@ from models.user import User
 from models.farmer import FarmerData
 from config import db
 from utils.emailer import send_confirmation_email
+from sqlalchemy import func
 import re
 
 auth_bp = Blueprint('auth', __name__)
@@ -52,9 +53,33 @@ def login():
     if not user or user.password != data.get('password'):
         return jsonify({'error': 'Invalid credentials'}), 401
 
-    print(f"✅ Login: {user.name}, {user.email}")
+    # ✅ Sync FarmerData if missing
+    farmer = FarmerData.query.filter(func.lower(FarmerData.Name) == user.name.lower()).first()
+    if not farmer:
+        farmer = FarmerData(
+            Name=user.name,
+            Email=user.email,
+            Password=user.password,
+            FieldSize=user.FieldSize,
+            Latitude=user.Latitude,
+            Longitude=user.Longitude
+        )
+        db.session.add(farmer)
+        db.session.commit()
+        print(f"✅ Synced FarmerData for: {user.name}")
+
+    # ✅ Use FarmerData as source of truth for profile
+    source = farmer or user
+    print(f"✅ Login: {source.Name if farmer else source.name}, {source.Email}")
+
     return jsonify({
         'message': 'Login successful',
-        'name': user.name,
-        'email': user.email
+        'name': source.Name if farmer else source.name,
+        'email': source.Email,
+        'field_size': getattr(source, 'FieldSize', 0),
+        'latitude': getattr(source, 'Latitude', 0),
+        'longitude': getattr(source, 'Longitude', 0),
+        'location': getattr(source, 'Location', '') or '',
+        'crop': getattr(source, 'Crop', '') or '',
+        'lastPrediction': getattr(source, 'LastPrediction', '') or ''
     })

@@ -1,10 +1,11 @@
 import pandas as pd
 import xgboost as xgb
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import StandardScaler
 import pickle
 import time
+import os
 
 # ✅ Step 1: Load datasets
 agmarknet = pd.read_csv('data/agmarknet_prices.csv')
@@ -66,10 +67,13 @@ features = X.columns
 feature_df = pd.DataFrame({'Feature': features, 'Importance': importance}).sort_values(by='Importance', ascending=False)
 print("📊 Top Features:\n", feature_df.head(10))
 
-# ✅ Step 11: Save model with timestamp
-timestamp = time.strftime("%Y%m%d-%H%M%S")
-model_path = f"model/xgboost_model_{timestamp}.pkl"
-with open(model_path, 'wb') as f:
+# ✅ Step 11: Save model, scaler, and features
+os.makedirs("model", exist_ok=True)
+with open("model/xgboost_model.pkl", "wb") as f:
     pickle.dump(model, f)
+with open("model/xgboost_scaler.pkl", "wb") as f:
+    pickle.dump(scaler, f)
+with open("model/xgboost_features.pkl", "wb") as f:
+    pickle.dump(list(features), f)
 
-print(f"✅ Final model saved to {model_path}")
+print("✅ Final model, scaler, and features saved to /model")

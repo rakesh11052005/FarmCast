@@ -30,7 +30,7 @@ function LoginRegister({ onLoginSuccess }) {
       setMessage(res.data.message);
 
       if (isLogin && res.data.message === 'Login successful') {
-        onLoginSuccess(res.data.name, form.email); // ✅ Pass name + email
+        onLoginSuccess(res.data); // ✅ Pass full profile object
       }
 
       setLoading(false);

@@ -5,16 +5,16 @@ import ProfileCard from './components/ProfileCard/ProfileCard';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({ name: '', email: '' });
+  const [userData, setUserData] = useState(null); // ✅ Store full profile object
 
-  const handleLoginSuccess = (name, email) => {
+  const handleLoginSuccess = (profile) => {
     setIsLoggedIn(true);
-    setUserData({ name, email });
+    setUserData(profile); // ✅ Save full profile from login response
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    setUserData({ name: '', email: '' });
+    setUserData(null);
   };
 
   return (
