@@ -62,7 +62,18 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
       onClick={() => setIsExpanded(!isExpanded)}
     >
       <div className="profile-header">
-        <h3> (Profile)--{profile.name}</h3>
+        <h3>{profile.name}</h3>
+        {!isExpanded && (
+          <button
+            className="logout-button inline"
+            onClick={(e) => {
+              e.stopPropagation();
+              onLogout();
+            }}
+          >
+            🚪 Logout
+          </button>
+        )}
       </div>
 
       <div className={`profile-details ${isExpanded ? 'visible' : 'hidden'}`}>
@@ -74,41 +85,39 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
         <p>🌍 Latitude: {profile.latitude !== undefined ? profile.latitude : 'Not available'}</p>
         <p>🌍 Longitude: {profile.longitude !== undefined ? profile.longitude : 'Not available'}</p>
 
-        <div className="button-row">
-          <button onClick={onLogout}>🚪 Logout</button>
+        <div className="button-row fade-in">
           <button onClick={(e) => { e.stopPropagation(); setIsEditing(true); }}>✏️ Edit</button>
           <button onClick={(e) => { e.stopPropagation(); handleDelete(); }}>🗑️ Delete</button>
+          <button onClick={(e) => { e.stopPropagation(); onLogout(); }}>🚪 Logout</button>
         </div>
 
-        {isEditing && (
-          <div className="edit-fields" onClick={(e) => e.stopPropagation()}>
-            <label>📐 Field Size (acres)</label>
-            <input
-              type="number"
-              value={fieldSize}
-              onChange={e => setFieldSize(e.target.value)}
-              placeholder="Enter field size"
-            />
-            <label>🧭 Latitude</label>
-            <input
-              type="number"
-              value={latitude}
-              onChange={e => setLatitude(e.target.value)}
-              placeholder="Enter latitude"
-            />
-            <label>🧭 Longitude</label>
-            <input
-              type="number"
-              value={longitude}
-              onChange={e => setLongitude(e.target.value)}
-              placeholder="Enter longitude"
-            />
-            <div className="button-row">
-              <button onClick={handleUpdate}>✅ Save</button>
-              <button onClick={() => setIsEditing(false)}>❌ Cancel</button>
-            </div>
+        <div className={`edit-fields ${isEditing ? 'visible' : ''}`} onClick={(e) => e.stopPropagation()}>
+          <label>📐 Field Size (acres)</label>
+          <input
+            type="number"
+            value={fieldSize}
+            onChange={e => setFieldSize(e.target.value)}
+            placeholder="Enter field size"
+          />
+          <label>🧭 Latitude</label>
+          <input
+            type="number"
+            value={latitude}
+            onChange={e => setLatitude(e.target.value)}
+            placeholder="Enter latitude"
+          />
+          <label>🧭 Longitude</label>
+          <input
+            type="number"
+            value={longitude}
+            onChange={e => setLongitude(e.target.value)}
+            placeholder="Enter longitude"
+          />
+          <div className="button-row">
+            <button onClick={handleUpdate}>✅ Save</button>
+            <button onClick={() => setIsEditing(false)}>❌ Cancel</button>
           </div>
-        )}
+        </div>
 
         {message && <p className="profile-message">{message}</p>}
       </div>

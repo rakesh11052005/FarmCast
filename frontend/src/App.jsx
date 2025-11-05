@@ -5,7 +5,7 @@ import ProfileCard from './components/ProfileCard/ProfileCard';
 import WeatherCard from './components/WeatherCard/WeatherCard';
 import SoilCard from './components/SoilCard/SoilCard';
 import ResultCard from './components/ResultCard/ResultCard';
-import './App.css'; // ✅ Make sure this includes your layout styles
+import './App.css';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,17 +26,18 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <h2>🌾 FarmCast Yield Predictor</h2>
+    <div className="app-container fade-in">
+      <h2 className="app-title">🌾 FarmCast Yield Predictor</h2>
 
       {!isLoggedIn ? (
         <LoginRegister onLoginSuccess={handleLoginSuccess} />
       ) : (
-        <>
-          <p>👋 Welcome, {userData.name}!</p>
+        <main className="main-card card">
+          <p className="welcome-msg">👋 Welcome, {userData.name}!</p>
+
           <div className="dashboard">
             {/* ✅ Left panel: Profile + CropForm */}
-            <div className="left-panel">
+            <section className="left-panel">
               <ProfileCard user={userData} onLogout={handleLogout} />
               <CropForm
                 onWeatherUpdate={setWeather}
@@ -48,10 +49,10 @@ function App() {
                   }));
                 }}
               />
-            </div>
+            </section>
 
             {/* ✅ Right panel: Weather + Soil + Result */}
-            <div className="right-panel">
+            <section className="right-panel">
               <WeatherCard
                 weather={weather}
                 lat={userData?.latitude}
@@ -59,9 +60,9 @@ function App() {
               />
               <SoilCard soilType={userData?.soil_type} />
               <ResultCard result={predictionResult} />
-            </div>
+            </section>
           </div>
-        </>
+        </main>
       )}
     </div>
   );
