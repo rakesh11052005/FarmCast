@@ -7,7 +7,7 @@ function WeatherCard({ weather, lat, lon }) {
   if (!weather) return null;
 
   const handleViewField = (e) => {
-    e.stopPropagation(); // prevent toggle
+    e.stopPropagation();
     window.open(`https://www.google.com/maps/@${lat},${lon},15z`, "_blank");
   };
 
@@ -20,9 +20,11 @@ function WeatherCard({ weather, lat, lon }) {
         <p>💨 Wind: {weather.wind_kph} kph</p>
         <p>🌤️ Condition: {weather.condition.text}</p>
 
-        <button className="view-field-btn" onClick={handleViewField}>
-          📍 View Field on Map
-        </button>
+        <div className="weather-actions">
+          <button className="action-btn" onClick={handleViewField}>
+            📍 View Field on Map
+          </button>
+        </div>
       </div>
     </div>
   );

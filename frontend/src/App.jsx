@@ -59,7 +59,10 @@ function App() {
                 lon={userData?.longitude}
               />
               <SoilCard soilType={userData?.soil_type} />
-              <ResultCard result={predictionResult} />
+              <ResultCard
+                result={predictionResult}
+                userEmail={userData?.email} // ✅ Pass email here
+              />
             </section>
           </div>
         </main>

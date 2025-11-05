@@ -4,13 +4,13 @@ import { FaCamera } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import './ResultCard.css';
 
-function ResultCard({ result }) {
+function ResultCard({ result, userEmail }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   if (!result) return null;
 
   const handleScreenshot = (e) => {
-    e.stopPropagation(); // prevent toggle
+    e.stopPropagation();
     const element = document.querySelector('.result-card');
     html2canvas(element).then(canvas => {
       const link = document.createElement('a');
@@ -21,9 +21,36 @@ function ResultCard({ result }) {
     });
   };
 
+  const handleSendEmail = async (e) => {
+    e.stopPropagation();
+    if (!userEmail) {
+      toast.error("❌ No email found for user.");
+      return;
+    }
+
+    try {
+      await fetch('http://localhost:5000/predict/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: userEmail,
+          cropType: result.crop_type,
+          predictedYield: result.yield,
+          confidence: result.confidence,
+          estimatedPrice: result.estimated_price,
+          pricePerQuintal: result.price_per_quintal
+        })
+      });
+      toast.success("📬 Prediction sent to your email!");
+    } catch (err) {
+      console.error("Email error:", err);
+      toast.error("❌ Failed to send email.");
+    }
+  };
+
   return (
     <div className={`result-card clickable`} onClick={() => setIsExpanded(!isExpanded)}>
-      <h3>📊 Prediction Result </h3>
+      <h3>📊 Prediction Result</h3>
 
       <div className={`result-details ${isExpanded ? 'visible' : 'hidden'}`}>
         {result.crop_type && <p>🌱 Crop Type: {result.crop_type}</p>}
@@ -36,9 +63,14 @@ function ResultCard({ result }) {
           <p>📦 Price per Quintal: ₹{result.price_per_quintal}</p>
         )}
 
-        <button onClick={handleScreenshot} className="screenshot-btn">
-          <FaCamera /> Save Screenshot
-        </button>
+        <div className="result-actions-row">
+          <button onClick={handleScreenshot} className="action-btn">
+            <FaCamera /> Screenshot
+          </button>
+          <button onClick={handleSendEmail} className="action-btn">
+            📤 Send Email
+          </button>
+        </div>
       </div>
     </div>
   );

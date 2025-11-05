@@ -47,20 +47,28 @@
   color: #444;
 }
 
-.screenshot-btn {
+.result-actions-row {
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.action-btn {
   background-color: #89d1fafa;
   color: white;
-  padding: 0.6rem 1rem;
+  padding: 0.4rem 0.8rem;
   border: none;
   border-radius: 6px;
+  font-size: 0.9rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.screenshot-btn:hover {
+.action-btn:hover {
   background-color: #77ecf5;
 }
