@@ -3,17 +3,17 @@
   padding: 2rem;
   margin-top: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgb(74, 199, 245);
+  box-shadow: 0 4px 12px rgba(74, 199, 245, 0.6);
   font-family: 'Poppins', sans-serif;
   max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  transition: box-shadow 0.3s ease, max-height 0.4s ease;
+  margin-inline: auto;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
   cursor: pointer;
 }
 
 .profile-card:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
 }
 
 /* ✅ Header layout */
@@ -21,50 +21,83 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
 }
 
-/* ✅ Name styling */
 .profile-header h3 {
   margin: 0;
   color: #2c3e50;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
-/* ✅ Logout transition container */
-.logout-transition {
-  transition: all 0.4s ease;
-}
-
-/* ✅ Logout button styling (top position) */
-.logout-button {
-  background-color: #dc3545;
-  color: white;
+/* ✅ Logout button always visible */
+.icon-button.logout {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  background-color: #a80000;
+  color: white;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.logout-button:hover {
+.icon-button.logout:hover {
+  background-color: #880000;
+}
+
+/* ✅ Edit/Delete buttons appear only when expanded */
+.icon-button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+.profile-card.expanded .icon-button-row {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ✅ Circular icon buttons */
+.icon-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.icon-button.edit {
+  background-color: #0d82ff;
+}
+.icon-button.edit:hover {
+  background-color: #0070e0;
+}
+
+.icon-button.delete {
+  background-color: #dc3545;
+}
+.icon-button.delete:hover {
   background-color: #c82333;
 }
 
-/* ✅ Position when collapsed */
-.stay-top {
-  position: static;
-}
-
-/* ✅ Move down when expanded */
-.move-down {
-  position: relative;
-  top: 2.5rem;
-  margin-top: 1rem;
-}
-
-/* ✅ Expand/collapse animation */
+/* ✅ Profile details transition */
 .profile-details {
   transition: max-height 0.4s ease, opacity 0.3s ease;
   overflow: hidden;
@@ -86,89 +119,58 @@
   margin: 0.5rem 0;
   color: #555;
   font-size: 1rem;
+  line-height: 1.4;
 }
 
-/* ✅ Button row styling */
-.button-row {
-  display: flex;
-  gap: 0.75rem; /* 🔽 Reduced gap */
-  margin-top: 0.75rem; /* 🔽 Reduced spacing */
-  flex-wrap: wrap;
-}
-
-/* ✅ Individual button colors */
-.button-row button {
-  padding: 0.6rem 1rem;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-/* ✅ Edit button: blue */
-.button-row button:nth-child(1) {
-  background-color: #0d82ff;
-}
-
-.button-row button:nth-child(1):hover {
-  background-color: #0070e0;
-}
-
-/* ✅ Delete button: red */
-.button-row button:nth-child(2) {
-  background-color: #dc3545;
-}
-
-.button-row button:nth-child(2):hover {
-  background-color: #c82333;
-}
-
-/* ✅ Logout button: red */
-.button-row button:nth-child(3) {
-  background-color: #dc3545;
-}
-
-.button-row button:nth-child(3):hover {
-  background-color: #c82333;
-}
-
-/* ✅ Edit field styling with smooth transition */
-.edit-fields {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
-  margin-top: 0.5rem; /* ✅ Fixed unit */
+/* ✅ Inline edit fields below each value */
+.edit-field-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem; /* 🔽 Reduced gap between inputs */
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
 }
 
-/* ✅ When editing is active */
-.edit-fields.visible {
-  max-height: 500px;
-  opacity: 1;
-  margin-top: 0.75rem;
-}
-
-.edit-fields label {
+.edit-field-group label {
   font-weight: 500;
-  color: #383838;
+  color: #2c3e50;
+  font-size: 0.95rem;
 }
 
-.edit-fields input {
-  padding: 0.5rem;
+.edit-field-group input {
+  padding: 0.5rem 0.75rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 1rem;
   transition: border-color 0.2s ease;
 }
 
-.edit-fields input:focus {
+.edit-field-group input:focus {
   border-color: #0077cc;
   outline: none;
+}
+
+/* ✅ Save/Cancel buttons */
+.button-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.button-row button {
+  padding: 0.5rem 1rem;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background-color: #0d82ff;
+}
+
+.button-row button:hover {
+  background-color: #0070e0;
 }
 
 /* ✅ Message styling */
@@ -176,4 +178,5 @@
   margin-top: 1rem;
   color: #0077cc;
   font-weight: 500;
+  font-size: 0.95rem;
 }

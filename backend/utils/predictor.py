@@ -1,3 +1,4 @@
+from datetime import datetime
 import numpy as np
 
 def predict_yield(data):
@@ -5,15 +6,17 @@ def predict_yield(data):
         crop_id = int(data.get("crop_id", 0))
         soil_type_id = int(data.get("soil_type_id", 0))
         location_id = int(data.get("location_id", 0))
-        sowing_day = int(data.get("sowing_day", 0))
+        sowing_date_str = data.get("sowing_date", "")
+
+        try:
+            sowing_date = datetime.strptime(sowing_date_str, "%Y-%m-%d")
+            sowing_day = sowing_date.timetuple().tm_yday
+        except ValueError:
+            return {"error": "Invalid sowing_date format. Use YYYY-MM-DD."}
 
         crop_map = {
-            1: "Wheat",
-            2: "Rice",
-            3: "Maize",
-            4: "Tomato",
-            5: "Chickpea",
-            6: "Green Gram"
+            1: "Wheat", 2: "Rice", 3: "Maize", 4: "Tomato", 5: "Chickpea",
+            6: "Green Gram", 7: "Sugarcane", 8: "Cotton", 9: "Mirchi"
         }
         crop_type = crop_map.get(crop_id, "Unknown")
 
@@ -23,12 +26,9 @@ def predict_yield(data):
         confidence = np.float32(0.85)
 
         base_price = {
-            "Wheat": 2200,
-            "Rice": 2000,
-            "Maize": 1800,
-            "Tomato": 1500,
-            "Chickpea": 5200,
-            "Green Gram": 6000
+            "Wheat": 2200, "Rice": 2000, "Maize": 1800, "Tomato": 1500,
+            "Chickpea": 5200, "Green Gram": 6000, "Sugarcane": 8000,
+            "Cotton": 47710, "Mirchi": 10000
         }
         price_per_quintal = base_price.get(crop_type, 2000)
         estimated_price = np.float32((predicted_yield / 100) * price_per_quintal)
@@ -42,5 +42,5 @@ def predict_yield(data):
         }
 
     except Exception as e:
-        print("Error in predictor:", e)
-        return {"error": str(e)}
+        print("❌ Error in predictor:", e)
+        return {"error": f"Prediction failed: {str(e)}"}

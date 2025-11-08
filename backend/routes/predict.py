@@ -14,7 +14,7 @@ predict_bp = Blueprint('predict', __name__)
 def yield_prediction():
     try:
         data = request.get_json(force=True)
-        required_fields = ['crop_id', 'soil_type_id', 'sowing_day']
+        required_fields = ['crop_id', 'soil_type_id', 'sowing_date']
         missing = [field for field in required_fields if field not in data or data[field] in [None, '']]
         if missing:
             return jsonify({'error': f'Missing fields: {", ".join(missing)}'}), 400
@@ -36,7 +36,6 @@ def yield_prediction():
         print(f"❌ Prediction error: {e}")
         return jsonify({'error': 'Prediction failed. Please check inputs or try again.'}), 500
 
-
 @predict_bp.route('/send-email', methods=['POST'])
 def send_prediction_email():
     try:
@@ -51,15 +50,15 @@ def send_prediction_email():
         port = int(os.getenv("EMAIL_PORT"))
 
         subject = "📊 Your FarmCast Prediction Result"
-        body = f"""Hello,
+        body = f"""Hello User,
 
 Here is your prediction result:
 
-🌱 Crop: {data.get('cropType')}
-🌾 Yield: {data.get('predictedYield')} kg/hectare
+🌱 Crop: {data.get('crop_type')}
+🌾 Yield: {data.get('yield')} kg/hectare
 ✅ Confidence: {float(data.get('confidence')) * 100:.2f}%
-💰 Estimated Price: ₹{data.get('estimatedPrice')}
-📦 Price per Quintal: ₹{data.get('pricePerQuintal')}
+💰 Estimated Price: ₹{data.get('estimated_price')}
+📦 Price per Quintal: ₹{data.get('price_per_quintal')}
 
 Thank you for using FarmCast!
 """

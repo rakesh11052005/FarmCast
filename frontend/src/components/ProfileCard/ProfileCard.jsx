@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FaEdit, FaTrash, FaSignOutAlt } from 'react-icons/fa';
 import './ProfileCard.css';
 
 function ProfileCard({ user, onLogout, onUserUpdate }) {
+  const [name, setName] = useState('');
   const [fieldSize, setFieldSize] = useState('');
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
@@ -14,6 +16,7 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
   useEffect(() => {
     setProfile(user);
     if (user) {
+      setName(user.name ?? '');
       setFieldSize(user.field_size ?? '');
       setLatitude(user.latitude ?? '');
       setLongitude(user.longitude ?? '');
@@ -25,14 +28,16 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
   const handleUpdate = async () => {
     try {
       await axios.put('http://localhost:5000/profile/update-profile', {
-        name: user.name,
+        email: profile.email,
+        name,
         field_size: parseFloat(fieldSize) || 0,
         latitude: parseFloat(latitude) || 0,
         longitude: parseFloat(longitude) || 0
       });
 
-      const refreshed = await axios.get(`http://localhost:5000/profile/get-profile?name=${user.name}`);
+      const refreshed = await axios.get(`http://localhost:5000/profile/get-profile?email=${profile.email}`);
       setProfile(refreshed.data);
+      setName(refreshed.data.name); // ✅ update local name
       if (onUserUpdate) onUserUpdate(refreshed.data);
       setMessage('✅ Profile updated successfully');
       setIsEditing(false);
@@ -42,12 +47,11 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
   };
 
   const handleDelete = async () => {
-    const confirm = window.confirm("Are you sure you want to delete your account?");
-    if (!confirm) return;
+    if (!window.confirm("Are you sure you want to delete your account?")) return;
 
     try {
       const res = await axios.delete('http://localhost:5000/profile/delete-account', {
-        data: { name: user.name }
+        data: { email: profile.email }
       });
       setMessage(res.data.message);
       if (onLogout) onLogout();
@@ -56,68 +60,68 @@ function ProfileCard({ user, onLogout, onUserUpdate }) {
     }
   };
 
+  const toggleCard = (e) => {
+    const ignoreTags = ['BUTTON', 'INPUT', 'TEXTAREA', 'LABEL', 'SVG', 'PATH'];
+    if (ignoreTags.includes(e.target.tagName)) return;
+    setIsExpanded(prev => !prev);
+  };
+
   return (
-    <div
-      className={`profile-card ${isExpanded ? 'expanded' : 'collapsed'}`}
-      onClick={() => setIsExpanded(!isExpanded)}
-    >
+    <div className={`profile-card ${isExpanded ? 'expanded' : ''}`} onClick={toggleCard}>
       <div className="profile-header">
         <h3>{profile.name}</h3>
-        {!isExpanded && (
-          <button
-            className="logout-button inline"
-            onClick={(e) => {
-              e.stopPropagation();
-              onLogout();
-            }}
-          >
-            🚪 Logout
-          </button>
-        )}
+        <button className="icon-button logout" onClick={(e) => { e.stopPropagation(); onLogout(); }}>
+          <FaSignOutAlt />
+        </button>
       </div>
 
+      {isExpanded && (
+        <div className="icon-button-row">
+          <button className="icon-button edit" onClick={(e) => { e.stopPropagation(); setIsEditing(true); }}>
+            <FaEdit />
+          </button>
+          <button className="icon-button delete" onClick={(e) => { e.stopPropagation(); handleDelete(); }}>
+            <FaTrash />
+          </button>
+        </div>
+      )}
+
       <div className={`profile-details ${isExpanded ? 'visible' : 'hidden'}`}>
-        <p>📧 Email: {profile.email}</p>
-        <p>📍 Location: {profile.location || 'Auto-detected'}</p>
-        <p>🌱 Preferred Crop: {profile.crop || 'Not set'}</p>
-        <p>🗓️ Last Prediction: {profile.lastPrediction || 'None yet'}</p>
-        <p>📐 Field Size: {profile.field_size !== undefined ? `${profile.field_size} acres` : 'Not set'}</p>
-        <p>🌍 Latitude: {profile.latitude !== undefined ? profile.latitude : 'Not available'}</p>
-        <p>🌍 Longitude: {profile.longitude !== undefined ? profile.longitude : 'Not available'}</p>
+        <div className="field-group"><p>📧 Email: {profile.email}</p></div>
+        <div className="field-group"><p>📍 Location: {profile.location || 'Auto-detected'}</p></div>
+        <div className="field-group"><p>🌱 Preferred Crop: {profile.crop || 'Not set'}</p></div>
+        <div className="field-group"><p>🗓️ Last Prediction: {profile.lastPrediction || 'None yet'}</p></div>
 
-        <div className="button-row fade-in">
-          <button onClick={(e) => { e.stopPropagation(); setIsEditing(true); }}>✏️ Edit</button>
-          <button onClick={(e) => { e.stopPropagation(); handleDelete(); }}>🗑️ Delete</button>
-          <button onClick={(e) => { e.stopPropagation(); onLogout(); }}>🚪 Logout</button>
-        </div>
-
-        <div className={`edit-fields ${isEditing ? 'visible' : ''}`} onClick={(e) => e.stopPropagation()}>
-          <label>📐 Field Size (acres)</label>
-          <input
-            type="number"
-            value={fieldSize}
-            onChange={e => setFieldSize(e.target.value)}
-            placeholder="Enter field size"
-          />
-          <label>🧭 Latitude</label>
-          <input
-            type="number"
-            value={latitude}
-            onChange={e => setLatitude(e.target.value)}
-            placeholder="Enter latitude"
-          />
-          <label>🧭 Longitude</label>
-          <input
-            type="number"
-            value={longitude}
-            onChange={e => setLongitude(e.target.value)}
-            placeholder="Enter longitude"
-          />
-          <div className="button-row">
-            <button onClick={handleUpdate}>✅ Save</button>
-            <button onClick={() => setIsEditing(false)}>❌ Cancel</button>
-          </div>
-        </div>
+        {isEditing ? (
+          <>
+            <div className="field-group">
+              <label>👤 Name</label>
+              <input type="text" value={name} onChange={e => setName(e.target.value)} />
+            </div>
+            <div className="field-group">
+              <label>📐 Field Size (acres)</label>
+              <input type="number" value={fieldSize} onChange={e => setFieldSize(e.target.value)} />
+            </div>
+            <div className="field-group">
+              <label>🧭 Latitude</label>
+              <input type="number" value={latitude} onChange={e => setLatitude(e.target.value)} />
+            </div>
+            <div className="field-group">
+              <label>🧭 Longitude</label>
+              <input type="number" value={longitude} onChange={e => setLongitude(e.target.value)} />
+            </div>
+            <div className="button-row">
+              <button onClick={handleUpdate}>✅ Save</button>
+              <button onClick={() => setIsEditing(false)}>❌ Cancel</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="field-group"><p>📐 Field Size: {profile.field_size ?? 'Not set'} acres</p></div>
+            <div className="field-group"><p>🌍 Latitude: {profile.latitude ?? 'Not available'}</p></div>
+            <div className="field-group"><p>🌍 Longitude: {profile.longitude ?? 'Not available'}</p></div>
+          </>
+        )}
 
         {message && <p className="profile-message">{message}</p>}
       </div>

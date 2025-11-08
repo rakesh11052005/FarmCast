@@ -8,12 +8,11 @@ function CropForm({ onWeatherUpdate, onPredictionUpdate }) {
   const [form, setForm] = useState({
     crop_id: '',
     soil_type_id: '',
-    sowing_day: '',
+    sowing_date: '',
     lat: '',
     lon: ''
   });
 
-  const [sowingDate, setSowingDate] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -37,7 +36,7 @@ function CropForm({ onWeatherUpdate, onPredictionUpdate }) {
     if (form.lat && form.lon) {
       axios.get(`http://api.weatherapi.com/v1/current.json?key=56241786dc064088b3e93535250209&q=${form.lat},${form.lon}`)
         .then(res => {
-          onWeatherUpdate(res.data.current); // ✅ Pass weather to App.jsx
+          onWeatherUpdate(res.data.current);
         })
         .catch(err => console.error("Weather fetch error:", err));
     }
@@ -48,10 +47,8 @@ function CropForm({ onWeatherUpdate, onPredictionUpdate }) {
   };
 
   const handleDateChange = e => {
-    const date = new Date(e.target.value);
-    const dayOfYear = Math.ceil((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
-    setSowingDate(e.target.value);
-    setForm(prev => ({ ...prev, sowing_day: dayOfYear }));
+    const formatted = e.target.value; // already in YYYY-MM-DD from input[type="date"]
+    setForm(prev => ({ ...prev, sowing_date: formatted }));
   };
 
   const handleSubmit = async e => {
@@ -63,7 +60,7 @@ function CropForm({ onWeatherUpdate, onPredictionUpdate }) {
       const payload = {
         crop_id: parseInt(form.crop_id),
         soil_type_id: parseInt(form.soil_type_id),
-        sowing_day: parseInt(form.sowing_day),
+        sowing_date: form.sowing_date,
         location_id: 0
       };
 
@@ -71,7 +68,7 @@ function CropForm({ onWeatherUpdate, onPredictionUpdate }) {
       onPredictionUpdate({
         result: res.data,
         soilType: soilTypeMap[form.soil_type_id]
-      }); // ✅ Pass result + soilType to App.jsx
+      });
       toast.success("✅ Prediction successful!");
     } catch (err) {
       console.error("Prediction error:", err);
@@ -94,6 +91,9 @@ function CropForm({ onWeatherUpdate, onPredictionUpdate }) {
           <option value="4">Tomato</option>
           <option value="5">Chickpea</option>
           <option value="6">Green Gram</option>
+          <option value="7">Sugarcane</option>
+          <option value="8">Cotton</option>
+          <option value="9">Mirchi</option>
         </select>
 
         <label>Soil Type</label>
@@ -105,7 +105,7 @@ function CropForm({ onWeatherUpdate, onPredictionUpdate }) {
         </select>
 
         <label>Sowing Date</label>
-        <input type="date" value={sowingDate} onChange={handleDateChange} required />
+        <input type="date" name="sowing_date" value={form.sowing_date} onChange={handleDateChange} required />
 
         <button type="submit" disabled={loading}>
           {loading ? "🔄 Predicting..." : "🚀 Predict Yield"}
