@@ -28,54 +28,66 @@ price_data = pd.read_csv(price_path)
 yield_data = pd.read_csv(yield_path)
 soil_data = pd.read_csv(soil_path)
 
-# ✅ Clean price data
-price_data = price_data.rename(columns={
-    'District': 'district',
-    'Commodity': 'crop',
-    'Modal Price': 'price',
-    'Arrival_Date': 'date'
-})
-price_data['year'] = pd.to_datetime(price_data['date'], errors='coerce', dayfirst=True).dt.year
-price_data = price_data[['district', 'crop', 'price', 'year']].dropna()
+# ✅ Normalize column names
+price_data.columns = price_data.columns.str.strip().str.replace(" ", "_").str.lower()
+yield_data.columns = yield_data.columns.str.strip().str.replace(" ", "_").str.lower()
+soil_data.columns = soil_data.columns.str.strip().str.replace(" ", "_").str.lower()
 
-# ✅ Clean yield data
-yield_data = yield_data.rename(columns={
-    'State': 'state',
-    'Crop': 'crop',
-    'Crop_Year': 'year',
-    'Yield': 'yield_kg'
+# ✅ Rename columns for consistency
+price_data = price_data.rename(columns={
+    'modal_price(₹)': 'price',
+    'arrival_date': 'date',
+    'district': 'district',
+    'commodity': 'crop'
 })
+yield_data = yield_data.rename(columns={
+    'state': 'state',
+    'crop': 'crop',
+    'crop_year': 'year',
+    'yield': 'yield_kg'
+})
+soil_data = soil_data.rename(columns={
+    'district': 'district',
+    'soil_type': 'soil_type'
+})
+
+# ✅ Extract year from date
+price_data['year'] = pd.to_datetime(price_data['date'], errors='coerce', dayfirst=True).dt.year
+
+# ✅ Drop rows with missing critical values
+price_data = price_data[['district', 'crop', 'price', 'year']].dropna()
 yield_data = yield_data[['state', 'crop', 'year', 'yield_kg']].dropna()
 
-# ✅ Inject fallback district
-yield_data['district'] = 'GENERIC'
-price_data['district'] = price_data['district'].fillna('GENERIC')
-
 # ✅ Normalize keys
-yield_data['district'] = yield_data['district'].str.strip().str.upper()
-price_data['district'] = price_data['district'].str.strip().str.upper()
-yield_data['crop'] = yield_data['crop'].str.strip().str.upper()
-price_data['crop'] = price_data['crop'].str.strip().str.upper()
+for df in [yield_data, price_data]:
+    df['crop'] = df['crop'].str.strip().str.upper()
 
-# ✅ Merge on district, crop, year
-merged = pd.merge(yield_data, price_data, on=['district', 'crop', 'year'], how='inner')
+# ✅ Fix known crop name mismatches
+crop_corrections = {
+    'TAMATO': 'TOMATO',
+    'GREEN GRAM': 'GREENGRAM',
+    'GREENGRAM': 'GREENGRAM'
+}
+for df in [yield_data, price_data]:
+    df['crop'] = df['crop'].replace(crop_corrections)
+
+# ✅ Merge price and yield data (drop district from yield_data)
+merged = pd.merge(yield_data.drop(columns=['state']), price_data, on=['crop', 'year'], how='inner')
 
 # ✅ Diagnose empty merge
 if merged.shape[0] == 0:
     print("❌ Merged dataset is empty.")
     print("🔍 Sample keys from yield data:")
-    print(yield_data[['district', 'crop', 'year']].drop_duplicates().head(10))
+    print(yield_data[['crop', 'year']].drop_duplicates().head(10))
     print("🔍 Sample keys from price data:")
     print(price_data[['district', 'crop', 'year']].drop_duplicates().head(10))
-    raise ValueError("❌ Merged dataset is empty. Check if crop, district, and year values match across files.")
+    raise ValueError("❌ Merged dataset is empty. Check if crop and year values match across files.")
 
-# ✅ Clean and normalize soil data
-soil_data = soil_data.rename(columns={'District ': 'district', 'Soil Type': 'soil_type'})
+# ✅ Normalize district for soil mapping
+merged['district'] = merged['district'].str.strip().str.upper()
+soil_data = pd.concat([soil_data, pd.DataFrame([{'district': 'GENERIC', 'soil_type': 'LOAMY'}])], ignore_index=True)
 soil_data['district'] = soil_data['district'].str.strip().str.upper()
 soil_data['soil_type'] = soil_data['soil_type'].str.strip().str.upper()
-
-# ✅ Inject fallback soil row
-soil_data = pd.concat([soil_data, pd.DataFrame([{'district': 'GENERIC', 'soil_type': 'LOAMY'}])], ignore_index=True)
 
 # ✅ Merge soil data
 merged = pd.merge(merged, soil_data, on='district', how='left')
@@ -88,10 +100,9 @@ categorical = pd.get_dummies(merged[['crop', 'district', 'soil_type']], drop_fir
 numeric = merged[['price', 'yield_kg']].copy()
 
 # ✅ Add micronutrients if available
-micronutrients = ['Zn %', 'Fe%', 'Cu %', 'Mn %', 'B %', 'S %']
+micronutrients = ['zn_%', 'fe%', 'cu_%', 'mn_%', 'b_%', 's_%']
 for col in micronutrients:
-    if col in merged.columns:
-        numeric.loc[:, col] = merged[col]
+    numeric[col] = merged[col] if col in merged.columns else 70.0
 
 # ✅ Combine all features
 merged_encoded = pd.concat([categorical, numeric], axis=1)
@@ -114,7 +125,6 @@ model = xgb.XGBRegressor(
     colsample_bytree=0.9,
     random_state=42
 )
-
 model.fit(X_train, y_train)
 
 # ✅ Evaluate

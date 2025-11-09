@@ -27,7 +27,7 @@ def yield_prediction():
             return jsonify({'error': result['error']}), 500
 
         clean_result = {
-            k: float(v) if isinstance(v, (np.float32, np.float64)) else v
+            k: float(v) if isinstance(v, (np.float32, np.float64, float)) else v
             for k, v in result.items()
         }
         return jsonify(clean_result)
