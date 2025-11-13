@@ -1,8 +1,6 @@
 from flask import Blueprint, request, jsonify
 from utils.predictor import predict_yield
-import numpy as np
-import os
-import smtplib
+import os, smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
@@ -14,70 +12,62 @@ predict_bp = Blueprint('predict', __name__)
 def yield_prediction():
     try:
         data = request.get_json(force=True)
-        required_fields = ['crop_id', 'soil_type_id', 'sowing_date']
-        missing = [field for field in required_fields if field not in data or data[field] in [None, '']]
-        if missing:
-            return jsonify({'error': f'Missing fields: {", ".join(missing)}'}), 400
-
-        if 'location_id' not in data:
-            data['location_id'] = 0
+        for field in ['crop_id', 'soil_type_id', 'sowing_date']:
+            if field not in data or not data[field]:
+                return jsonify({'error': f'Missing field: {field}'}), 400
+        data.setdefault('location_id', 0)
+        data.setdefault('price', 2000)
 
         result = predict_yield(data)
         if "error" in result:
             return jsonify({'error': result['error']}), 500
 
-        clean_result = {
-            k: float(v) if isinstance(v, (np.float32, np.float64, float)) else v
-            for k, v in result.items()
-        }
-        return jsonify(clean_result)
+        return jsonify({k: float(v) if isinstance(v, (float, int)) else v for k, v in result.items()})
 
     except Exception as e:
-        print(f"❌ Prediction error: {e}")
-        return jsonify({'error': 'Prediction failed. Please check inputs or try again.'}), 500
+        return jsonify({'error': 'Prediction failed'}), 500
 
 @predict_bp.route('/send-email', methods=['POST'])
 def send_prediction_email():
     try:
         data = request.get_json(force=True)
-        to_email = data.get('email')
-        if not to_email:
+        if not data.get('email'):
             return jsonify({'error': 'Missing email'}), 400
 
-        sender = os.getenv("EMAIL_ADDRESS")
-        password = os.getenv("EMAIL_PASSWORD")
-        host = os.getenv("EMAIL_HOST")
-        port = int(os.getenv("EMAIL_PORT"))
+        for field in ['crop_id', 'soil_type_id', 'sowing_date']:
+            if field not in data or not data[field]:
+                return jsonify({'error': f'Missing field: {field}'}), 400
+        data.setdefault('location_id', 0)
+        data.setdefault('price', 2000)
 
-        subject = "📊 Your FarmCast Prediction Result"
-        body = f"""Hello User,
+        result = predict_yield(data)
+        if "error" in result:
+            return jsonify({'error': result['error']}), 500
+
+        msg = MIMEMultipart()
+        msg['From'] = os.getenv("EMAIL_ADDRESS")
+        msg['To'] = data['email']
+        msg['Subject'] = "📊 Your FarmCast Prediction Result"
+        msg.attach(MIMEText(f"""Hello User,
 
 Here is your prediction result:
 
-🌱 Crop: {data.get('crop_type')}
-🌾 Yield: {data.get('yield')} kg/hectare
-✅ Confidence: {float(data.get('confidence')) * 100:.2f}%
-💰 Estimated Price: ₹{data.get('estimated_price')}
-📦 Price per Quintal: ₹{data.get('price_per_quintal')}
+🌱 Crop: {result['crop_type']}
+🌾 Yield: {round(result['yield'], 2)} kg/hectare
+✅ Confidence: {result['confidence'] * 100:.2f}%
+💰 Estimated Price: ₹{round(result['estimated_price'], 2)}
+📦 Price per Quintal: ₹{round(result['price_per_quintal'], 2)}
 
 Thank you for using FarmCast!
-"""
+""", 'plain'))
 
-        msg = MIMEMultipart()
-        msg['From'] = sender
-        msg['To'] = to_email
-        msg['Subject'] = subject
-        msg.attach(MIMEText(body, 'plain'))
-
-        server = smtplib.SMTP(host, port)
+        server = smtplib.SMTP(os.getenv("EMAIL_HOST"), int(os.getenv("EMAIL_PORT")))
         server.starttls()
-        server.login(sender, password)
+        server.login(os.getenv("EMAIL_ADDRESS"), os.getenv("EMAIL_PASSWORD"))
         server.send_message(msg)
         server.quit()
 
-        print(f"✅ Prediction email sent to {to_email}")
         return jsonify({'success': True})
 
     except Exception as e:
-        print(f"❌ Failed to send email: {e}")
         return jsonify({'error': 'Failed to send email'}), 500

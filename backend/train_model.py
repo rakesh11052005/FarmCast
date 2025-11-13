@@ -18,12 +18,10 @@ price_path = data_dir / 'agmarket_prices.csv'
 yield_path = data_dir / 'fao_crop_yield.csv'
 soil_path = data_dir / 'icar_soil_crop.csv'
 
-# ✅ Validate existence
 for path in [price_path, yield_path, soil_path]:
     if not path.exists():
         raise FileNotFoundError(f"❌ Missing required file: {path}")
 
-# ✅ Read CSVs
 price_data = pd.read_csv(price_path)
 yield_data = pd.read_csv(yield_path)
 soil_data = pd.read_csv(soil_path)
@@ -33,90 +31,54 @@ price_data.columns = price_data.columns.str.strip().str.replace(" ", "_").str.lo
 yield_data.columns = yield_data.columns.str.strip().str.replace(" ", "_").str.lower()
 soil_data.columns = soil_data.columns.str.strip().str.replace(" ", "_").str.lower()
 
-# ✅ Rename columns for consistency
+# ✅ Rename columns
 price_data = price_data.rename(columns={
     'modal_price(₹)': 'price',
     'arrival_date': 'date',
-    'district': 'district',
     'commodity': 'crop'
 })
 yield_data = yield_data.rename(columns={
-    'state': 'state',
-    'crop': 'crop',
     'crop_year': 'year',
     'yield': 'yield_kg'
 })
-soil_data = soil_data.rename(columns={
-    'district': 'district',
-    'soil_type': 'soil_type'
-})
 
-# ✅ Extract year from date
+# ✅ Extract year
 price_data['year'] = pd.to_datetime(price_data['date'], errors='coerce', dayfirst=True).dt.year
-
-# ✅ Drop rows with missing critical values
 price_data = price_data[['district', 'crop', 'price', 'year']].dropna()
-yield_data = yield_data[['state', 'crop', 'year', 'yield_kg']].dropna()
+yield_data = yield_data[['crop', 'year', 'yield_kg']].dropna()
 
-# ✅ Normalize keys
+# ✅ Normalize crop names
 for df in [yield_data, price_data]:
     df['crop'] = df['crop'].str.strip().str.upper()
-
-# ✅ Fix known crop name mismatches
-crop_corrections = {
-    'TAMATO': 'TOMATO',
-    'GREEN GRAM': 'GREENGRAM',
-    'GREENGRAM': 'GREENGRAM'
-}
+crop_corrections = {'TAMATO': 'TOMATO', 'GREEN GRAM': 'GREENGRAM'}
 for df in [yield_data, price_data]:
     df['crop'] = df['crop'].replace(crop_corrections)
 
-# ✅ Merge price and yield data (drop district from yield_data)
-merged = pd.merge(yield_data.drop(columns=['state']), price_data, on=['crop', 'year'], how='inner')
-
-# ✅ Diagnose empty merge
-if merged.shape[0] == 0:
-    print("❌ Merged dataset is empty.")
-    print("🔍 Sample keys from yield data:")
-    print(yield_data[['crop', 'year']].drop_duplicates().head(10))
-    print("🔍 Sample keys from price data:")
-    print(price_data[['district', 'crop', 'year']].drop_duplicates().head(10))
-    raise ValueError("❌ Merged dataset is empty. Check if crop and year values match across files.")
-
-# ✅ Normalize district for soil mapping
-merged['district'] = merged['district'].str.strip().str.upper()
-soil_data = pd.concat([soil_data, pd.DataFrame([{'district': 'GENERIC', 'soil_type': 'LOAMY'}])], ignore_index=True)
-soil_data['district'] = soil_data['district'].str.strip().str.upper()
-soil_data['soil_type'] = soil_data['soil_type'].str.strip().str.upper()
+# ✅ Merge price and yield
+merged = pd.merge(yield_data, price_data, on=['crop', 'year'], how='inner')
+if merged.empty:
+    raise ValueError("❌ Merged dataset is empty. Check crop/year alignment.")
 
 # ✅ Merge soil data
+merged['district'] = merged['district'].str.strip().str.upper()
+soil_data['district'] = soil_data['district'].str.strip().str.upper()
+soil_data['soil_type'] = soil_data['soil_type'].str.strip().str.upper()
+soil_data = pd.concat([soil_data, pd.DataFrame([{'district': 'GENERIC', 'soil_type': 'LOAMY'}])], ignore_index=True)
 merged = pd.merge(merged, soil_data, on='district', how='left')
 merged['soil_type'] = merged['soil_type'].fillna('LOAMY')
 
-# ✅ Encode categorical features
+# ✅ Encode features
 categorical = pd.get_dummies(merged[['crop', 'district', 'soil_type']], drop_first=True)
-
-# ✅ Add numeric features
-numeric = merged[['price', 'yield_kg']].copy()
-
-# ✅ Add micronutrients if available
-micronutrients = ['zn_%', 'fe%', 'cu_%', 'mn_%', 'b_%', 's_%']
-for col in micronutrients:
-    numeric[col] = merged[col] if col in merged.columns else 70.0
-
-# ✅ Combine all features
+numeric = merged[['price', 'yield_kg']]
 merged_encoded = pd.concat([categorical, numeric], axis=1)
 
-# ✅ Feature scaling
+# ✅ Train model
 scaler = StandardScaler()
 X = merged_encoded.drop('yield_kg', axis=1)
 X_scaled = scaler.fit_transform(X)
 y = merged_encoded['yield_kg']
-
-# ✅ Train/test split
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
-# ✅ Train XGBoost
 model = xgb.XGBRegressor(
     n_estimators=1000,
     max_depth=6,
@@ -126,23 +88,15 @@ model = xgb.XGBRegressor(
     random_state=42
 )
 model.fit(X_train, y_train)
-
-# ✅ Evaluate
 rmse = sqrt(mean_squared_error(y_test, model.predict(X_test)))
 print(f"✅ RMSE: {rmse:.2f} kg")
 
-# ✅ Feature importance
-features = X.columns
-importance = model.feature_importances_
-feature_df = pd.DataFrame({'Feature': features, 'Importance': importance}).sort_values(by='Importance', ascending=False)
-print("📊 Top Features:\n", feature_df.head(10))
-
-# ✅ Save model artifacts
+# ✅ Save artifacts
 with open(model_dir / "xgboost_model.pkl", "wb") as f:
     pickle.dump(model, f)
 with open(model_dir / "xgboost_scaler.pkl", "wb") as f:
     pickle.dump(scaler, f)
 with open(model_dir / "xgboost_features.pkl", "wb") as f:
-    pickle.dump(list(features), f)
+    pickle.dump(list(X.columns), f)
 
 print("✅ Final model, scaler, and features saved to /model")

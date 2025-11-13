@@ -47,7 +47,7 @@ function CropForm({ onWeatherUpdate, onPredictionUpdate }) {
   };
 
   const handleDateChange = e => {
-    const formatted = e.target.value; // already in YYYY-MM-DD from input[type="date"]
+    const formatted = e.target.value;
     setForm(prev => ({ ...prev, sowing_date: formatted }));
   };
 
@@ -61,12 +61,20 @@ function CropForm({ onWeatherUpdate, onPredictionUpdate }) {
         crop_id: parseInt(form.crop_id),
         soil_type_id: parseInt(form.soil_type_id),
         sowing_date: form.sowing_date,
-        location_id: 0
+        location_id: 0,
+        price: 2000 // ✅ Added to support email integration
       };
 
       const res = await axios.post('http://localhost:5000/predict/predict-yield', payload);
       onPredictionUpdate({
-        result: res.data,
+        result: {
+          ...res.data,
+          crop_id: payload.crop_id,
+          soil_type_id: payload.soil_type_id,
+          sowing_date: payload.sowing_date,
+          location_id: payload.location_id,
+          price: payload.price
+        },
         soilType: soilTypeMap[form.soil_type_id]
       });
       toast.success("✅ Prediction successful!");

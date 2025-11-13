@@ -28,17 +28,25 @@ function ResultCard({ result, userEmail }) {
       return;
     }
 
+    // ✅ Ensure all required fields are present
+    const requiredFields = ['crop_id', 'soil_type_id', 'sowing_date', 'location_id', 'price'];
+    const missing = requiredFields.filter(field => !(field in result));
+    if (missing.length > 0) {
+      toast.error(`❌ Missing fields: ${missing.join(', ')}`);
+      return;
+    }
+
     try {
       await fetch('http://localhost:5000/predict/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: userEmail,
-          cropType: result.crop_type,
-          predictedYield: result.yield,
-          confidence: result.confidence,
-          estimatedPrice: result.estimated_price,
-          pricePerQuintal: result.price_per_quintal
+          crop_id: result.crop_id,
+          soil_type_id: result.soil_type_id,
+          sowing_date: result.sowing_date,
+          location_id: result.location_id || 0,
+          price: result.price || 2000
         })
       });
       toast.success("📬 Prediction sent to your email!");
@@ -54,7 +62,7 @@ function ResultCard({ result, userEmail }) {
 
       <div className={`result-details ${isExpanded ? 'visible' : 'hidden'}`}>
         {result.crop_type && <p>🌱 Crop Type: {result.crop_type}</p>}
-        {result.yield && <p>🌾 Yield: {result.yield} kg/hectare</p>}
+        {result.yield && <p>🌾 Yield: {result.yield.toFixed(2)} kg/hectare</p>}
         {result.confidence && <p>✅ Confidence: {(result.confidence * 100).toFixed(2)}%</p>}
         {result.estimated_price && (
           <p>💰 Estimated Market Price: ₹{result.estimated_price.toFixed(2)}</p>
