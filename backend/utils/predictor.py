@@ -1,5 +1,6 @@
 import numpy as np
 import pickle
+import pandas as pd
 from datetime import datetime
 from pathlib import Path
 
@@ -38,13 +39,16 @@ def predict_yield(data):
         except ValueError:
             return {"error": "Invalid sowing_date format. Use YYYY-MM-DD."}
 
+        # ✅ Build input dictionary
         input_dict = {name: 0 for name in feature_names}
         input_dict[f"crop_{crop_type}"] = 1
         input_dict[f"district_{district}"] = 1
         input_dict[f"soil_type_{soil_type}"] = 1
         input_dict["price"] = float(data.get("price", 2000))
 
-        X_scaled = scaler.transform([[input_dict.get(name, 0) for name in feature_names]])
+        # ✅ Convert to DataFrame to preserve feature names
+        X_input = pd.DataFrame([input_dict], columns=feature_names)
+        X_scaled = scaler.transform(X_input)
         predicted_yield = float(model.predict(X_scaled)[0])
         confidence = 0.85
 
