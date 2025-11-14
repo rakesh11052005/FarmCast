@@ -49,7 +49,7 @@ merged['soil_type'] = merged['soil_type'].fillna('LOAMY')
 districts = merged['district'].unique()
 for district in districts:
     subset = merged[merged['district'] == district]
-    if len(subset) < 20:
+    if len(subset) < 10:
         print(f"⚠️ Skipping {district}: not enough data")
         continue
 

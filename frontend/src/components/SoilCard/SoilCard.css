@@ -1,14 +1,16 @@
 .soil-card {
-  background: #f9f9f9;
+  background: rgba(255, 255, 255, 0.636); /* ✅ Glassmorphism */
+  backdrop-filter: blur(12px);
   padding: 1.5rem;
   margin-top: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgb(33, 2, 2);
-  transition: transform 0.2s ease, max-height 0.4s ease, box-shadow 0.3s ease;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* ✅ Modern shadow */
+  transition: transform 0.3s ease, max-height 0.4s ease, box-shadow 0.3s ease;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
+  color: #f5f5f5; /* ✅ Dark mode readability */
 }
 
 .soil-card.clickable {
@@ -16,10 +18,11 @@
 }
 
 .soil-card.clickable:hover {
-  box-shadow: 0 0 12px rgba(40, 167, 69, 0.4);
+  box-shadow: 0 0 16px rgba(40, 167, 69, 0.5); /* ✅ Green glow */
   transform: scale(1.01);
 }
 
+/* ✅ Expand/collapse transitions */
 .soil-details {
   transition: max-height 0.4s ease, opacity 0.3s ease;
   overflow: hidden;
@@ -35,44 +38,52 @@
   max-height: 1000px;
   opacity: 1;
   margin-top: 1rem;
-  background: #eef6f0;
+  background: rgba(254, 254, 254, 0); /* ✅ Soft overlay */
   padding: 1rem;
-  border-radius: 6px;
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
 }
 
 .soil-details p {
   margin: 0.4rem 0;
-  color: #444;
+  color: #e0e0e0;
   font-size: 1rem;
+  line-height: 1.5;
 }
 
+/* ✅ Soil image */
 .soil-image {
   width: 100%;
   max-width: 500px;
-  border-radius: 6px;
+  border-radius: 10px;
   margin-bottom: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* ✅ Soil note */
 .soil-note {
   font-size: 0.95rem;
-  color: #444;
+  color: #1c0808;
   margin-bottom: 1rem;
 }
 
+/* ✅ Recommended crops section */
 .recommended-crops {
-  background: #eafbe7;
+  background: linear-gradient(to right, #1b5e1f00, #3fecf964); /* ✅ Modern gradient */
   padding: 1rem;
-  border-radius: 6px;
+  border-radius: 10px;
   margin-top: 1rem;
+  color: rgb(23, 22, 22);
 }
 
 .recommended-crops h4 {
   margin-bottom: 0.5rem;
-  color: #2c662d;
+  color: #031303;
+  font-size: 1.1rem;
 }
 
 .recommended-crops ul {
   padding-left: 1.2rem;
   list-style-type: disc;
-  color: #444;
+  color: #000000;
 }
