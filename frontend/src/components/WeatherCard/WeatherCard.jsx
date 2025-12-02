@@ -13,7 +13,7 @@ function WeatherCard({ weather, lat, lon }) {
 
   return (
     <div className={`weather-card clickable`} onClick={() => setIsExpanded(!isExpanded)}>
-      <h3>☁️ Weather Snapshot (click to view)</h3>
+      <h3>☁️ Weather</h3>
 
       <div className={`weather-details ${isExpanded ? 'visible' : 'hidden'}`}>
         <p>🌡️ Temperature: {weather.temp_c}°C</p>
