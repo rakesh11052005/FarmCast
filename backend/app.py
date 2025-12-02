@@ -3,7 +3,7 @@ from flask_cors import CORS
 from config import Config, db
 from routes.auth import auth_bp
 from routes.profile import profile_bp
-from routes.predict import predict_bp
+from routes.predict import predict_bp   # <-- must exist in predict.py
 from models.user import User
 from models.farmer import FarmerData
 import os

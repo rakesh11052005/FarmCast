@@ -6,7 +6,7 @@ from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 
 load_dotenv()
-predict_bp = Blueprint('predict', __name__)
+predict_bp = Blueprint('predict', __name__)   # <-- must be top-level
 
 @predict_bp.route('/predict-yield', methods=['POST'])
 def yield_prediction():
@@ -23,8 +23,7 @@ def yield_prediction():
             return jsonify({'error': result['error']}), 500
 
         return jsonify({k: float(v) if isinstance(v, (float, int)) else v for k, v in result.items()})
-
-    except Exception as e:
+    except Exception:
         return jsonify({'error': 'Prediction failed'}), 500
 
 @predict_bp.route('/send-email', methods=['POST'])
@@ -68,6 +67,5 @@ Thank you for using FarmCast!
         server.quit()
 
         return jsonify({'success': True})
-
-    except Exception as e:
+    except Exception:
         return jsonify({'error': 'Failed to send email'}), 500

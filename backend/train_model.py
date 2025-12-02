@@ -91,9 +91,8 @@ model.fit(X_train, y_train)
 rmse = sqrt(mean_squared_error(y_test, model.predict(X_test)))
 print(f"✅ RMSE: {rmse:.2f} kg")
 
-# ✅ Save artifacts
-with open(model_dir / "xgboost_model.pkl", "wb") as f:
-    pickle.dump(model, f)
+# ✅ Save artifacts (XGBoost with save_model, others with pickle)
+model.save_model(str(model_dir / "xgboost_model.json"))   # <-- FIXED
 with open(model_dir / "xgboost_scaler.pkl", "wb") as f:
     pickle.dump(scaler, f)
 with open(model_dir / "xgboost_features.pkl", "wb") as f:
